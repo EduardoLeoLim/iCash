@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Login</title>
+        <script type="text/javascript" src="../../JavaScript/Conductor/InicioSesion.js"></script> 
+        <link rel="stylesheet" href=".css">
+    </head>
+    <body>
+        <header style="text-align: center;">
+            <h1>Bienvenido a iCrash</h1>
+        </header> 
+        <main style="text-align: center;">
+            <div class="formulario">
+                <form method="post">
+                    <div class="usuario">
+                        <input id="usuario" type="number" placeholder="Numero de celular" required>
+                    </div>
+                    <div class="contrasenia">
+                        <input id="contrasenia" type="password" placeholder="Contraseña" required>
+                    </div>
+                    <input type="button" value="Iniciar sesion" onclick="iniciarSesion()">
+                    <div class="registrarse">
+                        ¿No tienes una cuenta? <a href="RegistroCuenta.html">Registrarse</a>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </body>
+</html>

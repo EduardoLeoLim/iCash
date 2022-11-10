@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Login</title>
+        <script type="text/javascript" src="../../JavaScript/Conductor/RegistroCuenta.js"></script> 
+        <link rel="stylesheet" href=".css">
+    </head>
+    <body>
+        <header style="text-align: center;">
+            <h1>Crear cuenta iCrash</h1>
+        </header> 
+        <main style="text-align: center;">
+            <div class="formulario">
+                <form method="post">
+                    <div class="nombre">
+                        <input type="text" placeholder="Nombre(s)" id="nombres" required>
+                    </div>
+                    <div class="apellidoPaterno">
+                        <input type="text" placeholder="Apellido paterno" id="apellidoPaterno" required>
+                    </div>
+                    <div class="apellidoMaterno">
+                        <input type="text" placeholder="Apellido materno" id="apellidoMaterno" required>
+                    </div>
+                    <div class="correo">
+                        <input type="text" placeholder="Correo electronico" id="correo" required>
+                    </div>
+                    <div class="numLicencia">
+                        <input type="number" placeholder="Numero de licencia" id="numLicencia" required>
+                    </div>
+                    <div class="usuario">
+                        <input type="number" placeholder="Numero de celular" id="usuario" required>
+                    </div>
+                    <div class="contrasenia">
+                        <input type="password" placeholder="Contraseña" id="contrasenia" required>
+                        <h4>La contraseña debe cumplir los siguientes requerimientos:</h4>
+                        <ul>
+                          <li>Al menos <strong>8 carácteres</strong></li>
+                          <li>Al menos <strong>una letra minuscula</strong></li>
+                          <li>Al menos <strong>una letra mayúscula</strong></li>
+                          <li>Al menos <strong>un dígito</strong></li>
+                          <li><strong>No espacios en blanco</strong></li>
+                          <li>Al menos<strong> 1 caracter especial</strong></li>
+                        </ul>
+                    </div>
+                    <div class="confirmarContrasenia">
+                        <input type="password" placeholder="Confirmar contraseña" id="confirmarContrasenia" required>
+                    </div>
+                    <input type="button" value="Registrarse" onclick="registrar()">
+                    <p> Al registrarse, aceptas nuestras condiciones de uso y Política de privacidad</p>
+                </form>
+                <a href="InicioSesion.html">
+                    <input type="submit" value="Regresar">
+                </a>
+            </div>
+        </main>
+    </body>
+</html>
