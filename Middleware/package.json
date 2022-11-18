@@ -1,0 +1,39 @@
+{
+  "name": "icrash",
+  "version": "1.0.0",
+  "description": "Rest API para sistema de compra de pólizas de seguro de siniestros vehiculares",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./index.js",
+    "start": "node ./index.js",
+    "format": "prettier --write src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EduardoLeoLim/iCrash.git"
+  },
+  "keywords": [
+    "icrash",
+    "poliza"
+  ],
+  "author": "Negrete Gacia Eder Ivan, Angel Eduardo Martínez Leo Lim, Javier Alberto Calderon Blas, Raúl Arturo Peredo Estudillo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EduardoLeoLim/iCrash/issues"
+  },
+  "homepage": "https://github.com/EduardoLeoLim/iCrash#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "express-validator": "^6.14.2",
+    "helmet": "^6.0.0",
+    "morgan": "^1.10.0",
+    "tedious": "^15.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20",
+    "prettier": "^2.7.1"
+  }
+}

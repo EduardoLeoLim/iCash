@@ -1,0 +1,30 @@
+import { Connection } from "tedious";
+import { Config } from "../../../compartido/infrestructura/conexiones/Conexion.js";
+import { ConsultarCoberturas } from "../../aplicacion/ConsultarCoberturas.js";
+import { SqlServerCoberturaRepositorio } from "../persistencia/SqlServerCoberturaRepositorio.js";
+
+export function consultarCoberturasController(req, res) {
+  let conexion = new Connection(Config);
+
+  conexion.connect((err) => {
+    if (err) {
+      console.log("Error: ", err);
+      res.status(500).json();
+      return;
+    }
+
+    let coberturaRepositorio = new SqlServerCoberturaRepositorio(conexion);
+    let consultarCoberturas = new ConsultarCoberturas(coberturaRepositorio);
+
+    consultarCoberturas
+      .run()
+      .then((coberturas) => {
+        res.status(200).send(coberturas);
+      })
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json();
+      });
+  });
+  conexion.close();
+}
