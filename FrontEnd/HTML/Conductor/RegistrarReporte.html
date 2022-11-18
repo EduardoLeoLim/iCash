@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de reporte</title>
+</head>
+<body>
+<header>
+    <h1>Registro de reporte</h1>
+</header>
+<main>
+    <div>
+        <form>
+            <div>
+                <h4>Poliza</h4>
+                <label for="polizaConductor">Poliza</label>
+                <select id="polizaConductor"> </select>
+            </div>
+
+            <div>
+                <h4>Ubicación</h4>
+                <br>
+                <label for="latitud">Latitud</label>
+                <input id="latitud" type="text">
+                <label for="longitud">Longitud</label>
+                <input id="longitud" type="text">
+
+                <button>Calcular ubicación</button>
+            </div>
+
+            <div>
+                <h4>Imágenes</h4>
+                <label for="imagenes"></label>
+                <input id="imagenes" type="file" multiple>
+            </div>
+
+            <div>
+                <h4>Involucrados</h4>
+
+                <label for="nombreInvolucrado">Nombre</label>
+                <input type="text" id="nombreInvolucrado">
+                <br>
+                <label for="marcaInvolucrado">Marca</label>
+                <input type="text" id="marcaInvolucrado">
+                <br>
+                <label for="modeloInvolucrado">Modelo</label>
+                <input type="text" id="modeloInvolucrado">
+                <br>
+                <label for="colorInvolucrado">Color</label>
+                <input type="text" id="colorInvolucrado">
+                <br>
+                <label for="numPlacasInvolucrado">Número de placas</label>
+                <input type="text" id="numPlacasInvolucrado">
+                <br>
+                <button>Agregar</button>
+
+
+                <table border="1">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Color</th>
+                        <th>NumPlacas</th>
+                    </tr>
+                    <tr>
+
+                    </tr>
+                </table>
+
+                <button>Remover involucrado</button>
+            </div>
+            <input type="submit" value="Registrar">
+        </form>
+    </div>
+</main>
+</body>
+</html>
