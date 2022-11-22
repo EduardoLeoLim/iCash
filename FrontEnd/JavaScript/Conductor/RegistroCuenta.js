@@ -16,6 +16,7 @@ function registrar() {
     var contraseniasIguales = validarContrasenias(contrasenia, confirmarContrasenia);
 
     if(validarCamposVacios && correoValido && validarContraseniaSegura && contraseniasIguales){
+        alert("Se registro la cuenta!");
         location.href = "../../HTML/Conductor/InicioSesion.html";
     }
 }
