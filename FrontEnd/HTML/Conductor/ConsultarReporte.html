@@ -1,110 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Detalles del reporte</title>
-</head>
-<body>
-    <header style="text-align: center;">
-        <h1>Detalles de reporte de siniestro vehicular</h1>
-    </header>
-    <main>
-        <button onclick="location.href='ConsultarReportes.html'">
-            Regresar
-        </button>
-        <div>
-            <h2>Datos generales</h2>
-
-            <div>
-                <label for="poliza">Poliza</label>
-                <input id="poliza" type="text" readonly>
+    <head>
+        <meta charset="UTF-8">
+        <title>Detalles del reporte</title>
+    </head>
+    <body>
+        <header style="text-align: center;">
+            <h1>Detalles de reporte de siniestro vehicular</h1>
+        </header>
+        <main style="text-align: center;">
+            <div class="formulario">
+                <details>
+                    <summary>Detalles generales</summary>
+                    <br>
+                    <label>Nombre poliza</label>
+                    <label id="nombrePoliza">Nombre poliza</label>
+                    <br>
+                    <label>Fecha</label>
+                    <label id="fecha">Fecha</label>
+                    <br>
+                    <label>Ciudad</label>
+                    <label id="ciudad">Ciudad</label>
+                    <br>
+                    <label>Latitud</label>
+                    <label id="latitud">Latitud</label>
+                    <br>
+                    <label>Longitud</label>
+                    <label id="longitud">Longitud</label>
+                    <br>
+                </details>
                 <br>
-                <label for="nombrePoliza">Nombre</label>
-                <input id="nombrePoliza" type="text" readonly>
+                <details>
+                    <summary>Vehículo de póliza</summary>
+                    <br>
+                    <label>Año</label>
+                    <label id="año">Año</label>
+                    <br>
+                    <label>Color</label>
+                    <label id="color">Color</label>
+                    <br>
+                    <label>Marca</label>
+                    <label id="marca">Marca</label>
+                    <br>
+                    <label>Modelo</label>
+                    <label id="modelo">Modelo</label>
+                    <br>
+                    <label>Número de placas</label>
+                    <label id="numPlacas">Número de placas</label>
+                    <br>
+                    <label>Número de serie</label>
+                    <label id="numSerie">Número de serie</label>
+                </details>
                 <br>
-                <label for="fecha">Fecha</label>
-                <input id="fecha" type="text" readonly>
-                <br>
-                <label for="ciudad">Ciudad</label>
-                <input id="ciudad" type="text" readonly>
-                <br>
-                <label for="latitud">Latitud</label>
-                <input id="latitud" type="text" readonly>
-                <br>
-                <label for="longitud">Longitud</label>
-                <input id="longitud" type="text" readonly>
-            </div>
-
-            <div>
-                <h3>Vehículo de póliza</h3>
-
-                <label for="año">Año</label>
-                <input id="año" type="text" readonly>
-                <br>
-                <label for="color">Color</label>
-                <input id="color" type="text" readonly>
-                <br>
-                <label for="marca">Marca</label>
-                <input id="marca" type="text" readonly>
-                <br>
-                <label for="modelo">Modelo</label>
-                <input id="modelo" type="text" readonly>
-                <br>
-                <label for="numPlacas">Número de placas</label>
-                <input id="numPlacas" type="text" readonly>
-                <br>
-                <label for="numSerie">Número de serie</label>
-                <input id="numSerie" type="text" readonly>
-            </div>
-
-            <div>
-                <h3>Imágenes</h3>
-                <div>
+                <details>
+                    <summary>Imágenes</summary>
+                    <br>
                     <img src="" alt="Imagen de reporte">
-                </div>
+                </details>
+                <br>
+                <details>
+                    <summary>Involucrados</summary>
+                    <br>
+                    <table border="1" align="center" id="involucrados">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Color</th>
+                            <th>NumPlacas</th>              
+                        </tr>
+                    </table>
+                </details>
+                <br>
+                <details>
+                    <summary>Datos del Ajustador</summary>
+                    <br>
+                    <label>Nombre</label>
+                    <label id="nombreAjustador">Nombre</label>
+                    <br>
+                    <label>Apellido paterno</label>
+                    <label id="apellidoPaternoAjustador">Apellido paterno</label>
+                    <br>
+                    <label>Apellido materno</label>
+                    <label id="apellidoMaternoAjustador">Apellido materno</label>
+                    <br>
+                </details>
+                <br>
+                <details>
+                    <summary>Dictmen</summary>
+                    <br>
+                    <label id="estatusDictamen">Sin dictaminar</label>
+                    <table border="1" align="center" id="dictamen">
+                        <tr>
+                            <th>Folio</th>
+                            <th>fecha</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </table>
+                </details>
             </div>
-
-            <div>
-                <h3>Involucrados</h3>
-                <table border="1">
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Marca</th>
-                        <th>Modelo</th>
-                        <th>Color</th>
-                        <th>NumPlacas</th>              
-                    </tr>
-                    <tr>
-
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div>
-            <h2>Datos del Ajustador</h2>
-            <div>
-                <label for="nombreAjustador">Nombre</label>
-                <input id="nombreAjustador" type="text" readonly>
-
-                <label for="apellidoPaternoAjustador">Apellido paterno</label>
-                <input id="apellidoPaternoAjustador" type="text" readonly>
-
-                <label for="apellidoMaternoAjustador">Apellido materno</label>
-                <input id="apellidoMaternoAjustador" type="text" readonly>
-            </div>
-        </div>
-        <div>
-            <h2>Dictmen</h2>
-            <label id="estatusDictamen">Sin dictaminar</label>
-            <table border="1">
-                <tr>
-                    <th>Folio</th>
-                    <th>fecha</th>
-                    <th>Descripción</th>
-
-                </tr>
-            </table>
-        </div>
-    </main>
-</body>
+            <br>
+            <button onclick="location.href='ConsultarReportes.html'">Regresar</button>
+        </main>
+    </body>
+    <script type="text/javascript" src="../../JavaScript/Conductor/ConsultarReporte.js"></script> 
 </html>
