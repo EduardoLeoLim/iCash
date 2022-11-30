@@ -28,7 +28,9 @@ export class SqlExpressCriteriaParser {
 
   #createQuery() {
     let consulta = "";
-    consulta += `SELECT ${      this._fields.length > 0 ? this._fields.join(", ") + " " : "* "    }`;
+    consulta += `SELECT ${
+      this._fields.length > 0 ? this._fields.join(", ") + " " : "* "
+    }`;
     consulta += `FROM ${this._source}`;
 
     if (this._criteria.hasFilters()) {

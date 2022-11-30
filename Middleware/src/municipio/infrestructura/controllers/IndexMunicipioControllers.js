@@ -4,11 +4,15 @@ import { validarCampos } from "../../../compartido/infrestructura/utils/ValidarC
 import { consultarMunicipiosController } from "./ConsultarMunicipiosController.js";
 
 export class IndexMuncipioControllers {
-    constructor() {
-        this.routers = Router();
-    }
+  constructor() {
+    this.routers = Router();
+  }
 
-    loadControllers(){
-        this.routers.get("/entidadesFederativas/:claveEntidadFederativa/municipios", [param("claveEntidadFederativa").isInt(), validarCampos], consultarMunicipiosController)
-    }
+  loadControllers() {
+    this.routers.get(
+      "/entidadesFederativas/:claveEntidadFederativa/municipios",
+      [param("claveEntidadFederativa").isInt(), validarCampos],
+      consultarMunicipiosController
+    );
+  }
 }

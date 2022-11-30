@@ -12,6 +12,7 @@ export class ConsultarCoberturaPorId {
         .equal("id", id)
         .orderAsc("id")
         .build();
+
       this._repositorio
         .buscar(criteria)
         .then((coberturas) => {

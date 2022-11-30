@@ -7,6 +7,9 @@ export class IndexEntidadFederativaControllers {
   }
 
   loadControllers() {
-    this.routers.get("/entidadesFederativas", consultarEntidadesFederativasController);
+    this.routers.get(
+      "/entidadesFederativas",
+      consultarEntidadesFederativasController
+    );
   }
 }

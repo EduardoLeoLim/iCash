@@ -3,6 +3,8 @@ import helmet from "helmet";
 import morgan from "morgan";
 import { IndexCoberturaControllers } from "./cobertura/infrestructura/controllers/IndexCoberturaControllers.js";
 import { IndexConductorControllers } from "./conductor/infrestructura/controllers/IndexConductorControllers.js";
+import { IndexEntidadFederativaControllers } from "./entidadfederativa/infrestructura/controllers/IndexEntidadFederativaControllers.js";
+import { IndexMuncipioControllers } from "./municipio/infrestructura/controllers/IndexMunicipioControllers.js";
 
 export class App {
   constructor() {
@@ -28,6 +30,16 @@ export class App {
     let conductorControlllers = new IndexConductorControllers();
     conductorControlllers.loadControllers();
     this.app.use(conductorControlllers.routers);
+
+    //EntidadFederativa
+    let entidadFederativaControllers = new IndexEntidadFederativaControllers();
+    entidadFederativaControllers.loadControllers();
+    this.app.use(entidadFederativaControllers.routers);
+
+    //Municipio
+    let municipioController = new IndexMuncipioControllers();
+    municipioController.loadControllers();
+    this.app.use(municipioController.routers);
 
     //Dictamen
 

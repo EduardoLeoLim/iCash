@@ -94,6 +94,8 @@ export class CriteriaBuilder {
 
   offset(offset) {
     this._offset = offset;
+
+    return this;
   }
 
   build() {

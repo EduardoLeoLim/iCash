@@ -4,8 +4,8 @@ import { ConsultarEntidadesFederativas } from "../../aplicacion/ConsultarEntidad
 import { SqlServerEntidadFederativaRepositorio } from "../persistencia/SqlServerEntidadFederativaRepositorio.js";
 
 export function consultarEntidadesFederativasController(req, res) {
-    let limit = req.query.limit;
-    let offset = req.query.offset;
+  let limit = req.query.limit;
+  let offset = req.query.offset;
 
   let conexion = new Connection(Config);
 

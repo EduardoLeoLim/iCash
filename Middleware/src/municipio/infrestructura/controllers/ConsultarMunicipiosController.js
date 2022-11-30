@@ -6,35 +6,38 @@ import { ConsultarMunicipioPorEntidadFederativa } from "../../aplicacion/Consult
 import { SqlServerMunicipioRepositorio } from "../persistencia/SqlServerMunicipioRepositorio.js";
 
 export function consultarMunicipiosController(req, res) {
+  let claveEntidadFederativa = req.params["claveEntidadFederativa"];
+  let conexion = new Connection(Config);
 
-    let claveEntidadFederativa = req.params["claveEntidadFederativa"];
-    let conexion = new Connection(Config);
+  conexion.connect((error) => {
+    if (error) {
+      console.log("Error: ", error);
+      res.status(500).json();
+      return;
+    }
 
-    conexion.connect((error) => {
-        if (error) {
-            console.log("Error: ", error);
-            res.status(500).json();
-            return;
-          }
+    let entidadFederativaRepositorio =
+      new SqlServerEntidadFederativaRepositorio(conexion);
+    let consultarEntidadFederativaPorClave =
+      new ConsultarEntidadFederativaPorClave(entidadFederativaRepositorio);
 
-          let entidadFederativaRepositorio = new SqlServerEntidadFederativaRepositorio(conexion);
-          let consultarEntidadFederativaPorClave = new ConsultarEntidadFederativaPorClave(entidadFederativaRepositorio)
+    let municipioRepositorio = new SqlServerMunicipioRepositorio(conexion);
+    let consultarMunicipios = new ConsultarMunicipioPorEntidadFederativa(
+      municipioRepositorio
+    );
 
-          let municipioRepositorio = new SqlServerMunicipioRepositorio(conexion);
-          let consultarMunicipios = new ConsultarMunicipioPorEntidadFederativa(municipioRepositorio);
-
-          consultarEntidadFederativaPorClave
-          .run(claveEntidadFederativa)
-          .then((entidadFederativa) => {
-            return entidadFederativa.id;
-          })
-          .then((idEntidadFederativa) => {
-                consultarMunicipios
-                .run(idEntidadFederativa)
-                .then((municipios) => res.status(200).json(municipios))
-          })
-          .catch(error => {
-            res.status(error.status).json(error)
-          })
-    })
+    consultarEntidadFederativaPorClave
+      .run(claveEntidadFederativa)
+      .then((entidadFederativa) => {
+        return entidadFederativa.id;
+      })
+      .then((idEntidadFederativa) => {
+        consultarMunicipios
+          .run(idEntidadFederativa)
+          .then((municipios) => res.status(200).json(municipios));
+      })
+      .catch((error) => {
+        res.status(error.status).json(error);
+      });
+  });
 }
