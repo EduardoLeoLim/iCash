@@ -1,0 +1,103 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+    background: linear-gradient(60deg, #3d3393 0%, #2b76b9 37%, #2cacd1 65%, #35eb93 100%);
+}
+
+.form-body{
+	width: 700px;
+	min-width: 350px;
+	height: 450px;
+	border-radius: 10px;
+	border-top-left-radius: 50px;
+	border-bottom-right-radius: 50px;
+	border: solid 1.5px #fff;
+	margin: 10px;
+}
+
+.text{
+	text-align: center;
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: #fff;
+	margin-bottom: 25px;
+}
+
+.text-p{
+	text-align: center;
+	font-size: 1rem;
+	font-weight: 600;
+	color: #fff;
+	margin-bottom: 25px;
+}
+
+.form-body input{
+	display: block;
+	margin: auto;
+	height: 40px;
+	width: 92%;
+	padding-left : 10pX;
+	color:#fff;
+	border: 1px solid #fff;
+	border-radius : 2px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	background-color : transparent;
+	border-top-left-radius : 10px;
+	border-bottom-right-radius : 10px;
+	font-size: 1rem;
+	outline: none;
+}
+
+.form-body input[type="password"]{
+	margin-bottom: 20px;
+}
+
+.form-body input[type="type"]{
+	margin: auto;
+}
+
+::placeholder{
+	font-size: 1rem;
+	color: rgba(255,255,255,.596);
+}
+
+.form-body input:hover{
+	transition: .5s;
+	border: 1px solid #2980b9;
+	color: #2498db;
+}
+
+.form-body button{
+	display: block;
+	margin: auto;
+	margin-top: 25px;
+	margin-bottom: 30px;
+	height: 40px;
+	width: 78%;
+	background: transparent;
+	color: #b9c4c6;
+	border-radius: 2px;
+	cursor: pointer;
+	outline: none;
+	border: 2px solid #2980b9;
+	transition: all .5s ease;
+}
+
+.form-body button:hover{
+	color: #d5dbdd;
+	border: 2px solid #3498db;
+	background: linear-gradient(#34495e, #2c3e50);
+}
+
+.regresar{
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
