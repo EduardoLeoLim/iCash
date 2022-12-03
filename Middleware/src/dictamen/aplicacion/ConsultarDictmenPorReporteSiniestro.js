@@ -10,6 +10,7 @@ export class ConsultarDictmenPorReporteSiniestro {
     new Promise((resolve, reject) => {
       let criteria = new CriteriaBuilder()
         .equal("idReporteSiniestro", idReporteSiniestro)
+        .obligatory()
         .build();
 
       this._repositorio

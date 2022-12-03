@@ -10,6 +10,7 @@ export class ConsultarCoberturaPorId {
     new Promise((resolve, reject) => {
       let criteria = new CriteriaBuilder()
         .equal("id", id)
+        .obligatory()
         .orderAsc("id")
         .build();
 

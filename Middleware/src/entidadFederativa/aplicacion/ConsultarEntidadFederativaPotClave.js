@@ -8,12 +8,14 @@ export class ConsultarEntidadFederativaPorClave {
 
   run = (clave) =>
     new Promise((resolve, reject) => {
-      let criteria = new CriteriaBuilder().equal("clave", clave).build();
+      let criteria = new CriteriaBuilder()
+        .equal("clave", clave)
+        .obligatory()
+        .build();
 
       this._repositorio
         .buscar(criteria)
         .then((entidadFederativas) => {
-          console.log("app " + entidadFederativas);
           if (entidadFederativas.length > 0) {
             resolve(entidadFederativas[0]);
           } else {

@@ -34,7 +34,8 @@ export function consultarMunicipiosController(req, res) {
       .then((idEntidadFederativa) => {
         consultarMunicipios
           .run(idEntidadFederativa)
-          .then((municipios) => res.status(200).json(municipios));
+          .then((municipios) => res.status(200).json(municipios))
+          .catch((error) => res.status(500).json());
       })
       .catch((error) => {
         res.status(error.status).json(error);

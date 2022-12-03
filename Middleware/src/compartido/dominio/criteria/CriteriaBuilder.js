@@ -1,4 +1,5 @@
 import { Criteria } from "./Criteria.js";
+import { FilterBuilder } from "./FilterBuilder.js";
 import { Filters } from "./Filters.js";
 import { Order } from "./Order.js";
 
@@ -12,66 +13,54 @@ export class CriteriaBuilder {
     let filterValues = new Map();
     filterValues.set("field", field);
     filterValues.set("operator", "=");
-    filterValues.set("value", value);
+    filterValues.set("value", value.toString());
 
-    this._filters.push(filterValues);
-
-    return this;
+    return new FilterBuilder(this, filterValues);
   }
 
   notEqual(field, value) {
     let filterValues = new Map();
     filterValues.set("field", field);
     filterValues.set("operator", "!=");
-    filterValues.set("value", value);
+    filterValues.set("value", value.toString());
 
-    this._filters.push(filterValues);
-
-    return this;
+    return new FilterBuilder(this, filterValues);
   }
 
   greaterThan(field, value) {
     let filterValues = new Map();
     filterValues.set("field", field);
     filterValues.set("operator", ">");
-    filterValues.set("value", value);
+    filterValues.set("value", value.toString());
 
-    this._filters.push(filterValues);
-
-    return this;
+    return new FilterBuilder(this, filterValues);
   }
 
   lessThan(field, value) {
     let filterValues = new Map();
     filterValues.set("field", field);
     filterValues.set("operator", "<");
-    filterValues.set("value", value);
+    filterValues.set("value", value.toString());
 
-    this._filters.push(filterValues);
-
-    return this;
+    return new FilterBuilder(this, filterValues);
   }
 
   contains(field, value) {
     let filterValues = new Map();
     filterValues.set("field", field);
     filterValues.set("operator", "CONTAINS");
-    filterValues.set("value", value);
+    filterValues.set("value", value.toString());
 
-    this._filters.push(filterValues);
-
-    return this;
+    return new FilterBuilder(this, filterValues);
   }
 
   notContains(field, value) {
     let filterValues = new Map();
     filterValues.set("field", field);
     filterValues.set("operator", "NOT_CONTAINS");
-    filterValues.set("value", value);
+    filterValues.set("value", value.toString());
 
-    this._filters.push(filterValues);
-
-    return this;
+    return new FilterBuilder(this, filterValues);
   }
 
   orderAsc(field) {
@@ -87,7 +76,7 @@ export class CriteriaBuilder {
   }
 
   limit(limit) {
-    this._limit;
+    this._limit = limit;
 
     return this;
   }

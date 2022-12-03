@@ -11,6 +11,7 @@ export class ConsultarMunicipioPorEntidadFederativa {
 
       let criteria = new CriteriaBuilder()
         .equal("idEntidadFederativa", idEntidadFederativa)
+        .obligatory()
         .orderAsc("id")
         .build();
 

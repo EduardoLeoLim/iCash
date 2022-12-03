@@ -7,12 +7,11 @@ export class ConsultarEntidadesFederativas {
 
   run = (limit, offset) =>
     new Promise((resolve, reject) => {
-      let criteriaBuilder = new CriteriaBuilder();
-      criteriaBuilder = criteriaBuilder.orderAsc("id");
-      if (limit) criteriaBuilder = criteriaBuilder.limit(limit);
-      if (offset) criteriaBuilder = criteriaBuilder.offset(offset);
-
-      let criteria = criteriaBuilder.build();
+      let criteria = new CriteriaBuilder()
+        .orderAsc("id")
+        .offset(offset)
+        .limit(limit)
+        .build();
 
       this._repositorio
         .buscar(criteria)
