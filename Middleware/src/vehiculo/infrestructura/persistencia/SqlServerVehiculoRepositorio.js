@@ -1,5 +1,5 @@
 import { TYPES } from "tedious";
-import { SqlExpressCriteriaParser } from "../../../compartido/infrestructura/utils/SqlExpressCriteriaParser.js";
+import { SqlServerCriteriaParser } from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
 import { Vehiculo } from "../../dominio/Vehiculo.js";
 
 export class SqlServerVehiculoRepositorio {
@@ -11,7 +11,7 @@ export class SqlServerVehiculoRepositorio {
     new Promise((resolve, reject) => {
       let vehiculos = [];
 
-      let criteriaParser = new SqlExpressCriteriaParser(
+      let criteriaParser = new SqlServerCriteriaParser(
         [],
         "Vehiculo",
         criteria

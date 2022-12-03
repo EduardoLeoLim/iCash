@@ -2,7 +2,7 @@ import { Criteria } from "../../dominio/criteria/Criteria.js";
 import { Operator } from "../../dominio/criteria/FilterOperator.js";
 import { InvalidArgumentError } from "../../dominio/value-object/InvalidArgumentError.js";
 
-export class SqlExpressCriteriaParser {
+export class SqlServerCriteriaParser {
   constructor(fields, source, criteria) {
     this._fields = fields;
     this._source = source;

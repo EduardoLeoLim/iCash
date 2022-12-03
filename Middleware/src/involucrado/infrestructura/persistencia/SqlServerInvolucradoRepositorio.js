@@ -1,5 +1,5 @@
 import { Request } from "tedious";
-import { SqlExpressCriteriaParser } from "../../../compartido/infrestructura/utils/SqlExpressCriteriaParser.js";
+import { SqlServerCriteriaParser } from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
 import { Involucrado } from "../../dominio/Involucrado.js";
 
 export class SqlServerInvolucradoRepositorio {
@@ -11,7 +11,7 @@ export class SqlServerInvolucradoRepositorio {
     new Promise((resolve, reject) => {
       let involucrados = [];
 
-      let criteriaParser = new SqlExpressCriteriaParser(
+      let criteriaParser = new SqlServerCriteriaParser(
         [],
         "Involucrado",
         criteria

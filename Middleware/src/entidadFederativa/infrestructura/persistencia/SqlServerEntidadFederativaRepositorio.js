@@ -1,5 +1,5 @@
 import { Request, TYPES } from "tedious";
-import { SqlExpressCriteriaParser } from "../../../compartido/infrestructura/utils/SqlExpressCriteriaParser.js";
+import { SqlServerCriteriaParser } from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
 import { EntidadFederativa } from "../../dominio/EntidadFederativa.js";
 
 export class SqlServerEntidadFederativaRepositorio {
@@ -11,7 +11,7 @@ export class SqlServerEntidadFederativaRepositorio {
     new Promise((resolve, reject) => {
       let entidadesFederativas = [];
 
-      let criteriaParser = new SqlExpressCriteriaParser(
+      let criteriaParser = new SqlServerCriteriaParser(
         [],
         "EntidadFederativa",
         criteria
@@ -24,6 +24,7 @@ export class SqlServerEntidadFederativaRepositorio {
           reject(new Error("Error base de datos"));
         } else {
           console.log(rowCount + " rows");
+          resolve(entidadesFederativas);
         }
       });
 
@@ -41,11 +42,6 @@ export class SqlServerEntidadFederativaRepositorio {
           entidadFederativa[name] = columnas[name].value;
         }
         entidadesFederativas.push(entidadFederativa);
-      });
-
-      request.on("error", (error) => reject(error));
-      request.on("doneInProc", (rowCount, more, rows) => {
-        resolve(entidadesFederativas);
       });
 
       this.conexion.execSql(request);

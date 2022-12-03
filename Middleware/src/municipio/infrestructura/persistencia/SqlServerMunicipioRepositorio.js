@@ -1,5 +1,5 @@
 import { Request, TYPES } from "tedious";
-import { SqlExpressCriteriaParser } from "../../../compartido/infrestructura/utils/SqlExpressCriteriaParser.js";
+import { SqlServerCriteriaParser } from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
 import { Municipio } from "../../dominio/Municipio.js";
 
 export class SqlServerMunicipioRepositorio {
@@ -11,7 +11,7 @@ export class SqlServerMunicipioRepositorio {
     new Promise((resolve, reject) => {
       let municipios = [];
 
-      let criteriaParser = new SqlExpressCriteriaParser(
+      let criteriaParser = new SqlServerCriteriaParser(
         [],
         "Municipio",
         criteria
@@ -22,10 +22,10 @@ export class SqlServerMunicipioRepositorio {
 
       let request = new Request(consulta, (err, rowCount) => {
         if (err) {
-          console.log(err);
-          reject(new Error("Error base de datos"));
+          reject(err.message);
         } else {
           console.log(rowCount + " rows");
+          resolve(municipios);
         }
       });
 
@@ -43,11 +43,6 @@ export class SqlServerMunicipioRepositorio {
           municipio[name] = columnas[name].value;
         }
         municipios.push(municipio);
-      });
-
-      request.on("error", (error) => reject(error));
-      request.on("doneInProc", (rowCount, more, rows) => {
-        resolve(coberturas);
       });
 
       this.conexion.execSql(request);

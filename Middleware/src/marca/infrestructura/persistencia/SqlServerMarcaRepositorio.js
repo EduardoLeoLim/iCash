@@ -9,7 +9,7 @@ export class SqlExpressMarcaRepositorio {
     new Promise((resolve, reject) => {
       let marcas = [];
 
-      let criteriaParser = new SqlExpressCriteriaParser([], "Marca", criteria);
+      let criteriaParser = new SqlServerCriteriaParser([], "Marca", criteria);
 
       let { consulta, parameters } = criteriaParser.parse();
 

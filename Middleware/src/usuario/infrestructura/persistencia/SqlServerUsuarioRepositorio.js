@@ -1,5 +1,5 @@
 import { Request, TYPES } from "tedious";
-import { SqlExpressCriteriaParser } from "../../../compartido/infrestructura/utils/SqlExpressCriteriaParser.js";
+import { SqlServerCriteriaParser } from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
 import { Usuario } from "../../dominio/Usuario.js";
 
 export class SqlServerUsuarioRepositorio {
@@ -11,11 +11,7 @@ export class SqlServerUsuarioRepositorio {
     new Promise((resolve, reject) => {
       let usuarios = [];
 
-      let criteriaParser = new SqlExpressCriteriaParser(
-        [],
-        "Usuario",
-        criteria
-      );
+      let criteriaParser = new SqlServerCriteriaParser([], "Usuario", criteria);
 
       let { consulta, parameters } = criteriaParser.parse();
 

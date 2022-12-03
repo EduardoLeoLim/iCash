@@ -1,5 +1,5 @@
 import { Request, TYPES } from "tedious";
-import { SqlExpressCriteriaParser } from "../../../compartido/infrestructura/utils/SqlExpressCriteriaParser.js";
+import { SqlServerCriteriaParser } from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
 import { Cobertura } from "../../dominio/Cobertura.js";
 
 export class SqlServerCoberturaRepositorio {
@@ -11,7 +11,7 @@ export class SqlServerCoberturaRepositorio {
     new Promise((resolve, reject) => {
       let coberturas = [];
 
-      let criteriaParser = new SqlExpressCriteriaParser(
+      let criteriaParser = new SqlServerCriteriaParser(
         [],
         "Cobertura",
         criteria

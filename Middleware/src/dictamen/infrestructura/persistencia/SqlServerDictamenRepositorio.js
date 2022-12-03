@@ -1,5 +1,5 @@
 import { Request, TYPES } from "tedious";
-import { SqlExpressCriteriaParser } from "../../../compartido/infrestructura/utils/SqlExpressCriteriaParser.js";
+import { SqlServerCriteriaParser } from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
 import { Dictamen } from "../../dominio/Dictamen.js";
 
 export class SqlServerDictamenRepositorio {
@@ -11,7 +11,7 @@ export class SqlServerDictamenRepositorio {
     new Promise((resolve, reject) => {
       let dictamenes = [];
 
-      let criteriaParser = new SqlExpressCriteriaParser(
+      let criteriaParser = new SqlServerCriteriaParser(
         [],
         "Dictamen",
         criteria
