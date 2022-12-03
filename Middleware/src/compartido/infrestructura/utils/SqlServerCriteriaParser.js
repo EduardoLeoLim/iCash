@@ -38,26 +38,25 @@ export class SqlServerCriteriaParser {
     }
 
     let order = this._criteria.order;
-    let limit = this._criteria.limit
-    let offset = this._criteria.offset
+    let limit = this._criteria.limit;
+    let offset = this._criteria.offset;
 
     if (order && !order.orderType.isNone()) {
       if (order.orderType.isAsc())
-        consulta += ` ORDER BY ${order.orderBy.value} ASC`
-      else
-        consulta += ` ORDER BY ${order.orderBy.value} DESC`
+        consulta += ` ORDER BY ${order.orderBy.value} ASC`;
+      else consulta += ` ORDER BY ${order.orderBy.value} DESC`;
     } else if (limit || offset) {
-      consulta += ` ORDER BY (SELECT NULL)`
+      consulta += ` ORDER BY (SELECT NULL)`;
     }
 
     if (offset) {
-      consulta += ` OFFSET ${offset} ROWS`
+      consulta += ` OFFSET ${offset} ROWS`;
     } else if (limit) {
-      consulta += ` OFFSET 0 ROWS`
+      consulta += ` OFFSET 0 ROWS`;
     }
 
     if (limit && limit > 0) {
-      consulta += ` FETCH NEXT ${limit} ROWS ONLY`
+      consulta += ` FETCH NEXT ${limit} ROWS ONLY`;
     }
 
     consulta += ";";
