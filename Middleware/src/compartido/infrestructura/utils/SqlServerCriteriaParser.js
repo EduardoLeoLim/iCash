@@ -15,7 +15,7 @@ export class SqlServerCriteriaParser {
     )
       throw new InvalidArgumentError("SqlParser: Recursos inválidos.");
 
-    if (this._source.length == 0)
+    if (this._source.length === 0)
       throw new InvalidArgumentError("SqlParser: Recursos inválidos.");
   }
 
@@ -46,15 +46,34 @@ export class SqlServerCriteriaParser {
     let conditions = "";
     let filters = this._criteria.filters.filters;
     let numParamenter = 1;
-    filters.forEach((filter) => {
-      let field = filter.field.value;
-      let param = "param" + numParamenter;
-      let operator = `${this.#createOperator(filter.operator.value)}`;
 
-      conditions += `${field} ${operator} @${param} `;
+    let obligatoryConditions = filters
+      .filter((item) => item.isOptional === false)
+      .map((filter) => {
+        let field = filter.field.value;
+        let param = "param" + numParamenter;
+        let operator = `${this.#createOperator(filter.operator.value)}`;
+        numParamenter++;
+        return `${field} ${operator} @${param}`;
+      })
+      .join(" AND ");
 
-      numParamenter++;
-    });
+    let optionalConditions = filters
+      .filter((item) => item.isOptional === true)
+      .map((filter) => {
+        let field = filter.field.value;
+        let param = "param" + numParamenter;
+        let operator = `${this.#createOperator(filter.operator.value)}`;
+        numParamenter++;
+        return `${field} ${operator} @${param}`;
+      })
+      .join(" OR ");
+
+    conditions = obligatoryConditions;
+    if (obligatoryConditions.length === 0 && optionalConditions.length > 0)
+      conditions = optionalConditions;
+    else if (optionalConditions.length > 0)
+      conditions = `(${conditions} AND (${optionalConditions}))`;
 
     return conditions;
   }
@@ -81,22 +100,39 @@ export class SqlServerCriteriaParser {
     let numParamenter = 1;
     let params = [];
 
-    filters.forEach((filter) => {
-      let value = filter.value.value;
-      let param = "param" + numParamenter;
-      if (
-        filter.operator.value === Operator.CONTAINS ||
-        filter.operator.value === Operator.NOT_CONTAINS
-      ) {
-        value = `%${value}%`;
-      }
+    let obligatoryConditions = filters
+      .filter((item) => item.isOptional === false)
+      .forEach((filter) => {
+        let param = this.#createParam(filter, numParamenter);
+        params.push(param);
+        numParamenter++;
+      });
 
-      let parameter = new Map();
-      parameter.set("param", param);
-      parameter.set("value", value);
+    let optionalConditions = filters
+      .filter((item) => item.isOptional === true)
+      .forEach((filter) => {
+        let param = this.#createParam(filter, numParamenter);
+        params.push(param);
+        numParamenter++;
+      });
 
-      params.push(parameter);
-    });
     return params;
+  }
+
+  #createParam(filter, numParamenter) {
+    let value = filter.value.value;
+    let param = "param" + numParamenter;
+    if (
+      filter.operator.value === Operator.CONTAINS ||
+      filter.operator.value === Operator.NOT_CONTAINS
+    ) {
+      value = `%${value}%`;
+    }
+
+    let parameter = new Map();
+    parameter.set("param", param);
+    parameter.set("value", value);
+
+    return parameter;
   }
 }
