@@ -27,8 +27,10 @@
   "dependencies": {
     "express": "^4.18.2",
     "express-fileupload": "^1.4.0",
+    "express-jwt": "^7.7.7",
     "express-validator": "^6.14.2",
     "helmet": "^6.0.0",
+    "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "tedious": "^15.1.2"
   },
