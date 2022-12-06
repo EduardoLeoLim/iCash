@@ -5,6 +5,7 @@ import { IndexCoberturaControllers } from "./cobertura/infrestructura/controller
 import { IndexConductorControllers } from "./conductor/infrestructura/controllers/IndexConductorControllers.js";
 import { IndexEntidadFederativaControllers } from "./entidadfederativa/infrestructura/controllers/IndexEntidadFederativaControllers.js";
 import { IndexMuncipioControllers } from "./municipio/infrestructura/controllers/IndexMunicipioControllers.js";
+import { IndexUsuarioControllers } from "./usuario/infrestructura/controllers/IndexUsuarioControllers.js";
 
 export class App {
   constructor() {
@@ -56,7 +57,9 @@ export class App {
     //Reporte Siniestro
 
     //Usuario
-
+    let usuariosController = new IndexUsuarioControllers();
+    usuariosController.loadControllers();
+    this.app.use(usuariosController.routers);
     //Vehiculo
   }
 
