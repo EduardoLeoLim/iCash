@@ -35,5 +35,6 @@ export function auntenticacionConductorController(req, res) {
             res.status(error.status).json(error);
             //Checar el numero de status del error y mensaje a poner
         });
+        conexion.close();
   });
 }

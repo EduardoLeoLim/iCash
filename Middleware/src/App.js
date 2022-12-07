@@ -6,6 +6,8 @@ import { IndexConductorControllers } from "./conductor/infrestructura/controller
 import { IndexEntidadFederativaControllers } from "./entidadfederativa/infrestructura/controllers/IndexEntidadFederativaControllers.js";
 import { IndexMuncipioControllers } from "./municipio/infrestructura/controllers/IndexMunicipioControllers.js";
 import { IndexUsuarioControllers } from "./usuario/infrestructura/controllers/IndexUsuarioControllers.js";
+import dotenv from "dotenv";
+//dotenv.config();
 
 export class App {
   constructor() {
@@ -19,6 +21,7 @@ export class App {
     this.app.use(express.json());
     this.app.use(morgan("dev"));
     this.app.use(helmet());
+    dotenv.config();
   }
 
   routers() {

@@ -1,5 +1,4 @@
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
+import jsonwebtoken from "jsonwebtoken";
 
 export function generarToken(usuario) {
     return jwt.sign(usuario, process.env.SECRET, {expiresIn: '30m'});

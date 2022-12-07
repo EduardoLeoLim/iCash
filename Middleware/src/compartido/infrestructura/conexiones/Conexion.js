@@ -1,5 +1,5 @@
 export var Config = {
-  server: "localhost", // or "localhost"
+  server: "25.1.116.116", // or "localhost"
   authentication: {
     type: "default",
     options: {
