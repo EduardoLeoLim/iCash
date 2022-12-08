@@ -13,6 +13,10 @@ function existenValoresStorage(direccion){
         .then(function (response){
         })
         .catch(function (){
+            sessionStorage.removeItem("token");
+            sessionStorage.removeItem("nombreUsuario");
+            sessionStorage.removeItem("idUsuario");
+            sessionStorage.removeItem("contrasena");
             window.open(direccion, "_self");
         })
 }
