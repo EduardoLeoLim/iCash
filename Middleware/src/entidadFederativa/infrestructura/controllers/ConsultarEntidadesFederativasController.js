@@ -29,6 +29,9 @@ export function consultarEntidadesFederativasController(req, res) {
       })
       .catch((error) => {
         res.status(error.status).json(error);
+      })
+      .finally(() => {
+        conexion.close();
       });
   });
 }

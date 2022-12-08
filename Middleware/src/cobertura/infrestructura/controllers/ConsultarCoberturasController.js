@@ -24,7 +24,9 @@ export function consultarCoberturasController(req, res) {
       .catch((error) => {
         console.log(error.message);
         res.status(500).json();
+      })
+      .finally(() => {
+        conexion.close();
       });
   });
-  conexion.close();
 }
