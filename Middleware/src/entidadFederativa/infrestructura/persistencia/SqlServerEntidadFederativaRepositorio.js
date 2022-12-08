@@ -23,7 +23,7 @@ export class SqlServerEntidadFederativaRepositorio {
           console.log("Error EntidadFederativaRepositorio: " + err);
           reject(new Error("Error base de datos"));
         } else {
-          console.log(rowCount + " rows");
+          console.log(rowCount + " filas");
           resolve(entidadesFederativas);
         }
       });
@@ -38,7 +38,7 @@ export class SqlServerEntidadFederativaRepositorio {
 
       request.on("row", (columnas) => {
         let entidadFederativa = new EntidadFederativa();
-        for (var name in columnas) {
+        for (let name in columnas) {
           entidadFederativa[name] = columnas[name].value;
         }
         entidadesFederativas.push(entidadFederativa);
