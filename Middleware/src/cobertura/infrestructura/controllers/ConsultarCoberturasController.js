@@ -8,7 +8,7 @@ export function consultarCoberturasController(req, res) {
 
   conexion.connect((err) => {
     if (err) {
-      console.log("Error: ", err);
+      console.log("Error al iniciar conexión: ", err.message);
       res.status(500).json();
       return;
     }
@@ -22,9 +22,11 @@ export function consultarCoberturasController(req, res) {
         res.status(200).send(coberturas);
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
         res.status(500).json();
+      })
+      .finally(() => {
+        conexion.close();
       });
   });
-  conexion.close();
 }

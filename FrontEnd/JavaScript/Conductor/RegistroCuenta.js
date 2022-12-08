@@ -61,3 +61,7 @@ function validarContrasenias(contra1, contra2) {
         return true;
     }
 }
+
+window.onload = function(){
+    existenValoresStorage("../../HTML/Conductor/InicioSesion.html")
+};

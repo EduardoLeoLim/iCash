@@ -1,15 +1,14 @@
 export var Config = {
-  server: "localhost", // or "localhost"
-  options: {},
+  server: "25.1.116.116", // or "localhost"
   authentication: {
     type: "default",
     options: {
-      userName: "icrash",
+      userName: "iCrashUser",
       password: "012345",
     },
   },
   options: {
-    database: "icrash",
+    database: "iCrash",
     trustServerCertificate: true,
     rowCollectionOnDone: true,
     useColumnNames: true,

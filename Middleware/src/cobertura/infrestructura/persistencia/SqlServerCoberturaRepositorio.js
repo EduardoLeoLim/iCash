@@ -1,5 +1,5 @@
 import { Request, TYPES } from "tedious";
-import { SqlExpressCriteriaParser } from "../../../compartido/infrestructura/utils/SqlExpressCriteriaParser.js";
+import { SqlServerCriteriaParser } from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
 import { Cobertura } from "../../dominio/Cobertura.js";
 
 export class SqlServerCoberturaRepositorio {
@@ -7,10 +7,11 @@ export class SqlServerCoberturaRepositorio {
     this.conexion = conexion;
   }
 
-  buscar = (criteria) => new Promise((resolve, reject) => {
+  buscar = (criteria) =>
+    new Promise((resolve, reject) => {
       let coberturas = [];
 
-      let criteriaParser = new SqlExpressCriteriaParser(
+      let criteriaParser = new SqlServerCriteriaParser(
         [],
         "Cobertura",
         criteria
@@ -19,7 +20,7 @@ export class SqlServerCoberturaRepositorio {
 
       console.log(consulta);
 
-      let query = new Request(consulta, (err, rowCount) => {
+      let request = new Request(consulta, (err, rowCount) => {
         if (err) {
           console.log("Error CoberturaRepositorio: " + err);
           reject(new Error("Error base de datos"));
@@ -29,14 +30,14 @@ export class SqlServerCoberturaRepositorio {
       });
 
       parameters.forEach((parameter) => {
-        query.addParameter(
+        request.addParameter(
           parameter.get("param"),
           TYPES.VarChar,
           parameter.get("value")
         );
       });
 
-      query.on("row", (columnas) => {
+      request.on("row", (columnas) => {
         let cobertura = new Cobertura();
         for (var name in columnas) {
           cobertura[name] = columnas[name].value;
@@ -44,10 +45,11 @@ export class SqlServerCoberturaRepositorio {
         coberturas.push(cobertura);
       });
 
-      query.on("doneInProc", (rowCount, more, rows) => {
+      request.on("error", (error) => reject(error));
+      request.on("doneInProc", (rowCount, more, rows) => {
         resolve(coberturas);
       });
 
-      this.conexion.execSql(query);
+      this.conexion.execSql(request);
     });
 }

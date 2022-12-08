@@ -19,13 +19,15 @@ export function consultarCoberturaPorIdController(req, res) {
 
     consultarCobertura
       .run(id)
-      .then((coberturas) => {
-        console.log("Controlador");
-        res.status(200).send(coberturas);
+      .then((cobertura) => {
+        res.status(200).send(cobertura);
       })
       .catch((error) => {
         res.status(error.status).json(error);
-      });
+      })
+      .finally(() => {
+        conexion.close();
+      })
   });
-  conexion.close();
+
 }
