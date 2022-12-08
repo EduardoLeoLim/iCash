@@ -24,7 +24,8 @@ export class SqlServerVehiculoRepositorio {
           console.log("Error VehiculoRepositorio: " + err);
           reject(new Error("Error base de datos"));
         } else {
-          console.log(rowCount + " rows");
+          console.log(rowCount + " filas");
+          resolve(vehiculos)
         }
       });
 
@@ -44,11 +45,6 @@ export class SqlServerVehiculoRepositorio {
         vehiculos.push(vehiculo);
       });
 
-      request.on("error", (error) => reject(error));
-      request.on("doneInProc", (rowCount, more, rows) => {
-        resolve(vehiculos);
-      });
-
       this.conexion.execSql(request);
     });
 
@@ -64,6 +60,8 @@ export class SqlServerVehiculoRepositorio {
         if (err) {
           console.log("Error VehiculoRepositorio: " + err);
           reject(new Error("Error base de datos"));
+        } else {
+          resolve(idVehiculo);
         }
       });
 
@@ -78,11 +76,6 @@ export class SqlServerVehiculoRepositorio {
       request.on("row", (columns) => {
         idVehiculo = columns[0].value;
         console.log("vehículo registrado con id: %d", idVehiculo);
-      });
-
-      request.on("error", (error) => reject(error));
-      request.on("doneInProc", () => {
-        resolve(idVehiculo);
       });
 
       this.conexion.execSql(request);

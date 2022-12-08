@@ -18,13 +18,11 @@ export class SqlServerMunicipioRepositorio {
       );
       let { consulta, parameters } = criteriaParser.parse();
 
-      console.log(consulta);
-
       let request = new Request(consulta, (err, rowCount) => {
         if (err) {
           reject(err.message);
         } else {
-          console.log(rowCount + " rows");
+          console.log(rowCount + " filas");
           resolve(municipios);
         }
       });
@@ -39,7 +37,7 @@ export class SqlServerMunicipioRepositorio {
 
       request.on("row", (columnas) => {
         let municipio = new Municipio();
-        for (var name in columnas) {
+        for (let name in columnas) {
           municipio[name] = columnas[name].value;
         }
         municipios.push(municipio);

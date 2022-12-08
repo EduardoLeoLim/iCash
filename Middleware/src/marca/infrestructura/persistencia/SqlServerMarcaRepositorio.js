@@ -1,4 +1,6 @@
 import { Marca } from "../../dominio/Marca.js";
+import { TYPES, Request } from "tedious";
+import { SqlServerCriteriaParser } from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
 
 export class SqlExpressMarcaRepositorio {
   constructor(conexion) {
@@ -18,7 +20,8 @@ export class SqlExpressMarcaRepositorio {
           console.log("Error MarcaRepositorioRepositorio: " + err);
           reject(new Error("Error base de datos"));
         } else {
-          console.log(rowCount + " rows");
+          console.log(rowCount + " filas");
+          resolve(marcas)
         }
       });
 
@@ -36,11 +39,6 @@ export class SqlExpressMarcaRepositorio {
           marca[name] = columnas[name].value;
         }
         marcas.push(marca);
-      });
-
-      request.on("error", (error) => reject(error));
-      request.on("doneInProc", (rowCount, more, rows) => {
-        resolve(marcas);
       });
 
       this.conexion.execSql(request);

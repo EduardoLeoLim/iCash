@@ -24,7 +24,8 @@ export class SqlServerInvolucradoRepositorio {
           console.log("Error InvolucradoRepositorio: " + err);
           reject(new Error("Error base de datos"));
         } else {
-          console.log(rowCount + " rows");
+          console.log(rowCount + " filas");
+          resolve(involucrados)
         }
       });
 
@@ -38,15 +39,10 @@ export class SqlServerInvolucradoRepositorio {
 
       request.on("row", (columnas) => {
         let involucrado = new Involucrado();
-        for (var name in columnas) {
+        for (let name in columnas) {
           involucrado[name] = columnas[name].value;
         }
         involucrados.push(involucrado);
-      });
-
-      request.on("error", (error) => reject(error));
-      request.on("doneInProc", (rowCount, more, rows) => {
-        resolve(involucrados);
       });
 
       this.conexion.execSql(request);

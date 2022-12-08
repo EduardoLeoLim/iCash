@@ -21,7 +21,8 @@ export class SqlServerPlazoRepositorio {
           console.log("Error PlazoRepositorio: " + err);
           reject(new Error("Error base de datos"));
         } else {
-          console.log(rowCount + " rows");
+          console.log(rowCount + " filas");
+          resolve(plazos)
         }
       });
 
@@ -35,15 +36,10 @@ export class SqlServerPlazoRepositorio {
 
       request.on("row", (columnas) => {
         let plazo = new Plazo();
-        for (var name in columnas) {
+        for (let name in columnas) {
           plazo[name] = columnas[name].value;
         }
         plazos.push(plazo);
-      });
-
-      request.on("error", (error) => reject(error));
-      request.on("doneInProc", (rowCount, more, rows) => {
-        resolve(plazos);
       });
 
       this.conexion.execSql(request);

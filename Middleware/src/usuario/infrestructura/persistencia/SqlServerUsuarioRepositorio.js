@@ -20,7 +20,8 @@ export class SqlServerUsuarioRepositorio {
           console.log("Error UsuarioRepositorio: " + err);
           reject(new Error("Error base de datos"));
         } else {
-          console.log(rowCount + " rows");
+          console.log(rowCount + " filas");
+          resolve(usuarios)
         }
       });
 
@@ -40,11 +41,6 @@ export class SqlServerUsuarioRepositorio {
         usuarios.push(usuario);
       });
 
-      request.on("error", (error) => reject(error));
-      request.on("doneInProc", (rowCount, more, rows) => {
-        resolve(usuarios);
-      });
-
       this.conexion.execSql(request);
     });
 
@@ -56,28 +52,25 @@ export class SqlServerUsuarioRepositorio {
         "values (@value1, @value2, @value3, @value4, @value5); " +
         "SELECT scope_identity();";
 
-      let request = new Request(consulta, (err) => {
-        if (err) {
+      let request = new Request(consulta, (error) => {
+        if (error) {
           console.log("Error VehiculoRepositorio: " + err);
           reject(new Error("Error base de datos"));
+        } else {
+          resolve(idUsuario);
         }
       });
 
       request.addParameter("value1", TYPES.VarChar, usuario.nombre);
-      request.addParameter("value2", TYPES.VarChar, vehiculo.apellidoPaterno);
-      request.addParameter("value3", TYPES.VarChar, vehiculo.apellidoMaterno);
-      request.addParameter("value4", TYPES.VarChar, vehiculo.nombreUsuario);
-      request.addParameter("value5", TYPES.VarChar, vehiculo.claveAcceso);
+      request.addParameter("value2", TYPES.VarChar, usuario.apellidoPaterno);
+      request.addParameter("value3", TYPES.VarChar, usuario.apellidoMaterno);
+      request.addParameter("value4", TYPES.VarChar, usuario.nombreUsuario);
+      request.addParameter("value5", TYPES.VarChar, usuario.claveAcceso);
 
       //Se obtiene id del usuario al ajecutar 'SELECT scope_identity();'
       request.on("row", (columns) => {
         idUsuario = columns[0].value;
         console.log("Usuario registrado con id: %d", idUsuario);
-      });
-
-      request.on("error", (error) => reject(error));
-      request.on("doneInProc", () => {
-        resolve(idVehiculo);
       });
 
       this.conexion.execSql(request);
