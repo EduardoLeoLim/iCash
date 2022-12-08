@@ -4,7 +4,6 @@ import { generarToken } from "../../../compartido/infrestructura/utils/Token.js"
 import { Auntenticacion } from "../../aplicacion/Auntenticacion.js";
 import { SqlServerUsuarioRepositorio } from "../persistencia/SqlServerUsuarioRepositorio.js";
 
-
 export function auntenticacionConductorController(req, res) {
   const nombreUsuario = req.body.nombreUsuario;
   const claveAcceso = req.body.claveAcceso;
@@ -18,11 +17,8 @@ export function auntenticacionConductorController(req, res) {
       return;
     }
 
-    let usuariosRepositorio =
-        new SqlServerUsuarioRepositorio(conexion);
-    let auntenticacion = new Auntenticacion(
-        usuariosRepositorio
-    );
+    let usuariosRepositorio = new SqlServerUsuarioRepositorio(conexion);
+    let auntenticacion = new Auntenticacion(usuariosRepositorio);
 
     auntenticacion
       .auntenticacionConductor(nombreUsuario, claveAcceso)

@@ -25,7 +25,7 @@ export class SqlServerInvolucradoRepositorio {
           reject(new Error("Error base de datos"));
         } else {
           console.log(rowCount + " filas");
-          resolve(involucrados)
+          resolve(involucrados);
         }
       });
 

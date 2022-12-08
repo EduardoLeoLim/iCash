@@ -21,7 +21,7 @@ export class SqlServerUsuarioRepositorio {
           reject(new Error("Error base de datos"));
         } else {
           console.log(rowCount + " filas");
-          resolve(usuarios)
+          resolve(usuarios);
         }
       });
 

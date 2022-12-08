@@ -11,10 +11,7 @@ export class IndexUsuarioControllers {
   loadControllers() {
     this.routers.post(
       "/conductor/login",
-      [body([
-        "nombreUsuario",
-        "claveAcceso"
-      ]).isString(), validarCampos],
+      [body(["nombreUsuario", "claveAcceso"]).isString(), validarCampos],
       auntenticacionConductorController
     );
   }

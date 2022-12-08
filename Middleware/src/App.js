@@ -7,7 +7,6 @@ import { IndexEntidadFederativaControllers } from "./entidadfederativa/infrestru
 import { IndexMuncipioControllers } from "./municipio/infrestructura/controllers/IndexMunicipioControllers.js";
 import { IndexUsuarioControllers } from "./usuario/infrestructura/controllers/IndexUsuarioControllers.js";
 import dotenv from "dotenv";
-//dotenv.config();
 
 export class App {
   constructor() {
