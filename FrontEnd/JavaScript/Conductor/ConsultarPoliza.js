@@ -28,4 +28,8 @@ function recuperarDatosVehiculo() {
     document.getElementById('colorVehiculo').innerHTML  = "Verde";
 }
 
-window.onload = mostrarDatosPoliza();
+window.onload = function(){
+    existenValoresStorage("../../HTML/Conductor/InicioSesion.html")
+    mostrarDatosPoliza();
+};
+

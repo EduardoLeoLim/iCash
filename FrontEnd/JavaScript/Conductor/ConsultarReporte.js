@@ -65,4 +65,7 @@ function recuperarDatosDictamen() {
     tabla.innerHTML += template;
 }
 
-window.onload = mostrarDatosPoliza();
+window.onload = function(){
+    existenValoresStorage("../../HTML/Conductor/InicioSesion.html")
+    mostrarDatosPoliza()
+};
