@@ -1,0 +1,53 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}   
+
+body{
+	height: 100vh;
+    background: linear-gradient(60deg, #3d3393 0%, #2b76b9 37%, #2cacd1 65%, #35eb93 100%);
+}
+
+table {
+    margin: 0 auto;
+    margin-top: 1%;
+    width: 100%;
+    position: relative;
+}
+
+th, td{
+    width: 5%;
+    vertical-align: top;
+    border-collapse: collapse;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.formulario button{
+    display: block;
+	margin: auto;
+    position: relative;
+    top: 1000%;
+	height: 40px;
+	width: 78%;
+	background: transparent;
+	color: #000;
+	border-radius: 2px;
+	cursor: pointer;
+	outline: none;
+	border: 2px solid white;
+	transition: all .5s ease;
+}
+
+.formulario button:hover{
+	color: #000;
+	border: 2px solid #3498db;
+	background: linear-gradient(#008091, #68b3ff);
+}
+
+.formulario button:hover{
+	color: #000;
+	border: 2px solid #3498db;
+	background: linear-gradient(#008091, #68b3ff);
+}

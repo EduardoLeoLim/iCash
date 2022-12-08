@@ -1,88 +1,99 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Consultar poliza</title>
-        <link rel="stylesheet" href=".css">
-    </head>
-    <body>
-        <header style="text-align: center;">
-            <h1>Detalles poliza</h1>
-        </header> 
-        <main style="text-align: center;">
-            <div class="formulario">
-                <details>
-                    <summary>Detalles poliza</summary>
-                    <br>
-                    <div class="nombrePoliza">
-                        <label>Nombre poliza</label>
-                        <label id="nombrePoliza">Nombre poliza</label>
-                    </div>
-                    <div class="precioFinal">
-                        <label>Precio final</label>
-                        <label id="precioFinal">Precio final</label>
-                    </div>
-                    <div class="nombreCobertura">
-                        <label>Nombre cobertura</label>
-                        <label id="nombreCobertura">Nombre cobertura</label>
-                    </div>
-                    <div class="precioCobertura">
-                        <label>Precio cobertura</label>
-                        <label id="precioCobertura">Precio cobertura</label>
-                    </div>
-                    <div class="tipoCobertura">
-                        <label>Tipo cobertura</label>
-                        <label id="tipoCobertura">Tipo cobertura</label>
-                    </div>
-                    <div class="duracionPlazo">
-                        <label>Duración del plazo</label>
-                        <label id="duracionPlazo">Duración del plazo</label>
-                    </div>
-                    <div class="nombrePlazo">
-                        <label>Nombre plazo</label>
-                        <label id="nombrePlazo">Nombre plazo</label>
-                    </div>
-                    <div class="precioPlazo">
-                        <label>Precio plazo</label>
-                        <label id="precioPlazo">Precio plazo</label>
-                    </div>
-                </details>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <script type="text/javascript" src="../../JavaScript/Conductor/ConsultarPoliza.js"></script>
+    <link rel="stylesheet" href="/iCrash-master/FrontEnd/CSS/ConsultarPoliza.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body style="background-color: #FFEDE9;">
+    <header style="text-align: center;">
+        <h1>Detalles poliza</h1>
+    </header>
+    <main style="text-align: center;">
+        <div class="formulario">
+            <details>
+                <summary>Detalles poliza</summary>
                 <br>
-                <details>
-                    <summary>Detalles vehículo</summary>
-                    <br>
-                    <div class="numPlacas">
-                        <label>Número placas</label>
-                        <label id="numPlacas">Número placas</label>
-                    </div>
-                    <div class="numSerie">
-                        <label>Número serie</label>
-                        <label id="numSerie">Número serie</label>
-                    </div>
-                    <div class="marcaVehiculo">
-                        <label>Marca vehículo</label>
-                        <label id="marcaVehiculo">Marca vehículo</label>
-                    </div>
-                    <div class="modeloVehiculo">
-                        <label>Modelo vehículo</label>
-                        <label id="modeloVehiculo">Modelo vehículo</label>
-                    </div>
-                    <div class="anioVehiculo">
-                        <label>Año del vehículo</label>
-                        <label id="anioVehiculo">Año del vehículo</label>
-                    </div>
-                    <div class="colorVehiculo">
-                        <label>Color vehículo</label>
-                        <label id="colorVehiculo">Color vehículo</label>
-                    </div>
-                </details>
+                <div class="nombrePoliza">
+                    <label>Nombre poliza</label>
+                    <label id="nombrePoliza">Nombre poliza</label>
+                </div>
+                <div class="precioFinal">
+                    <label>Precio final</label>
+                    <label id="precioFinal">Precio final</label>
+                </div>
+                <div class="nombreCobertura">
+                    <label>Nombre cobertura</label>
+                    <label id="nombreCobertura">Nombre cobertura</label>
+                </div>
+                <div class="precioCobertura">
+                    <label>Precio cobertura</label>
+                    <label id="precioCobertura">Precio cobertura</label>
+                </div>
+                <div class="tipoCobertura">
+                    <label>Tipo cobertura</label>
+                    <label id="tipoCobertura">Tipo cobertura</label>
+                </div>
+                <div class="duracionPlazo">
+                    <label>Duración del plazo</label>
+                    <label id="duracionPlazo">Duración del plazo</label>
+                </div>
+                <div class="nombrePlazo">
+                    <label>Nombre plazo</label>
+                    <label id="nombrePlazo">Nombre plazo</label>
+                </div>
+                <div class="precioPlazo">
+                    <label>Precio plazo</label>
+                    <label id="precioPlazo">Precio plazo</label>
+                </div>
+            </details>
+            <br>
+            <details>
+                <summary>Detalles vehículo</summary>
                 <br>
-                <input type="button" value="Regresar" onclick="regresar()">
-            </div>
-        </main>
-    </body>
-    <script type="text/javascript" src="../../JavaScript/VariableGlobales.js" ></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script type="text/javascript" src="../../JavaScript/comprobarSessionStorage.js" ></script>
-    <script type="text/javascript" src="../../JavaScript/Conductor/ConsultarPoliza.js"></script> 
+                <div class="numPlacas">
+                    <label>Número placas</label>
+                    <label id="numPlacas">Número placas</label>
+                </div>
+                <div class="numSerie">
+                    <label>Número serie</label>
+                    <label id="numSerie">Número serie</label>
+                </div>
+                <div class="marcaVehiculo">
+                    <label>Marca vehículo</label>
+                    <label id="marcaVehiculo">Marca vehículo</label>
+                </div>
+                <div class="modeloVehiculo">
+                    <label>Modelo vehículo</label>
+                    <label id="modeloVehiculo">Modelo vehículo</label>
+                </div>
+                <div class="anioVehiculo">
+                    <label>Año del vehículo</label>
+                    <label id="anioVehiculo">Año del vehículo</label>
+                </div>
+                <div class="colorVehiculo">
+                    <label>Color vehículo</label>
+                    <label id="colorVehiculo">Color vehículo</label>
+                </div>
+            </details>
+            <br>
+            <input type="button" value="Regresar" onclick="regresar()">
+        </div>
+    </main>
+</body>
+<script type="text/javascript" src="../../JavaScript/Conductor/ConsultarPoliza.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+</body>
+<script type="text/javascript" src="../../JavaScript/VariableGlobales.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script type="text/javascript" src="../../JavaScript/comprobarSessionStorage.js"></script>
+<script type="text/javascript" src="../../JavaScript/Conductor/ConsultarPoliza.js"></script>
+
 </html>

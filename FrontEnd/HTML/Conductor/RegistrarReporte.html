@@ -1,81 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Registro de reporte</title>
-    <script type="text/javascript" src="../../JavaScript/VariableGlobales.js" ></script>
+    <script type="text/javascript" src="../../JavaScript/VariableGlobales.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script type="text/javascript" src="../../JavaScript/comprobarSessionStorage.js" ></script>
+    <script type="text/javascript" src="../../JavaScript/comprobarSessionStorage.js"></script>
+    <link rel="stylesheet" href="/FrontEnd/CSS/Conductor/RegistrarReporte.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
 </head>
+
 <body>
-<header>
-    <h1>Registro de reporte</h1>
-</header>
-<main>
-    <div>
-        <form>
-            <div>
-                <h4>Poliza</h4>
-                <label for="polizaConductor">Poliza</label>
-                <select id="polizaConductor"> </select>
-            </div>
+    <header>
+        <h1>Registro de reporte</h1>
+    </header>
+    <main>
+        <div class="container-form">
+            <form class="row g-3">
+                <div>
+                    <h4>Poliza</h4>
+                    <label for="polizaConductor">Poliza</label>
+                    <select id="polizaConductor"> </select>
+                </div>
 
-            <div>
-                <h4>Ubicación</h4>
-                <br>
-                <label for="latitud">Latitud</label>
-                <input id="latitud" type="text">
-                <label for="longitud">Longitud</label>
-                <input id="longitud" type="text">
+                <div>
+                    <h4>Ubicación</h4>
+                    <label for="latitud">Latitud</label>
+                    <input id="latitud" type="text">
+                    <label for="longitud">Longitud</label>
+                    <input id="longitud" type="text">
 
-                <button>Calcular ubicación</button>
-            </div>
+                    <button>Calcular ubicación</button>
+                </div>
 
-            <div>
-                <h4>Imágenes</h4>
-                <label for="imagenes"></label>
-                <input id="imagenes" type="file" multiple>
-            </div>
+                <div>
+                    <h4>Imágenes</h4>
+                    <label for="imagenes"></label>
+                    <input id="imagenes" type="file" multiple>
+                </div>
 
-            <div>
-                <h4>Involucrados</h4>
+                <div>
+                    <h4>Involucrados</h4>
+                    <div class="nombre col-md-6">
+                        <label for="nombreInvolucrado">Nombre involucrado</label>
+                        <input type="text" id="nombreInvolucrado">
+                    </div>
 
-                <label for="nombreInvolucrado">Nombre</label>
-                <input type="text" id="nombreInvolucrado">
-                <br>
-                <label for="marcaInvolucrado">Marca</label>
-                <input type="text" id="marcaInvolucrado">
-                <br>
-                <label for="modeloInvolucrado">Modelo</label>
-                <input type="text" id="modeloInvolucrado">
-                <br>
-                <label for="colorInvolucrado">Color</label>
-                <input type="text" id="colorInvolucrado">
-                <br>
-                <label for="numPlacasInvolucrado">Número de placas</label>
-                <input type="text" id="numPlacasInvolucrado">
-                <br>
-                <button>Agregar</button>
+                    <div>
+                        <label for="marcaInvolucrado col-md-6">Marca</label>
+                        <input type="text" id="marcaInvolucrado">
+                    </div>
+
+                    <div>
+                        <label for="modeloInvolucrado">Modelo</label>
+                        <input type="text" id="modeloInvolucrado">
+                    </div>
+
+                    <div>
+                        <label for="colorInvolucrado">Color</label>
+                        <input type="text" id="colorInvolucrado">
+                    </div>
+
+                    <div>
+                        <label for="numPlacasInvolucrado">Número de placas</label>
+                        <input type="text" id="numPlacasInvolucrado">
+                    </div>
 
 
-                <table border="1">
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Marca</th>
-                        <th>Modelo</th>
-                        <th>Color</th>
-                        <th>NumPlacas</th>
-                    </tr>
-                    <tr>
+                    <button>Agregar</button>
 
-                    </tr>
-                </table>
+                    <table border="1">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Color</th>
+                            <th>NumPlacas</th>
+                        </tr>
+                        <tr>
 
-                <button>Remover involucrado</button>
-            </div>
-            <input type="submit" value="Registrar">
-        </form>
-    </div>
-</main>
+                        </tr>
+                    </table>
+
+                    <button>Remover involucrado</button>
+                </div>
+                <input type="submit" value="Registrar">
+            </form>
+        </div>
+    </main>
 </body>
+
 </html>
