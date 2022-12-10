@@ -1,7 +1,7 @@
-import { ResourceNotFoundError } from "../../compartido/aplicacion/excepciones/ResourceNotFoundError.js";
+import ResourceNotFoundError from "../../compartido/aplicacion/excepciones/ResourceNotFoundError.js";
 import { CriteriaBuilder } from "../../compartido/dominio/criteria/CriteriaBuilder.js";
 
-export class ConsultarCoberturaPorId {
+export default class ConsultarCoberturaPorId {
   constructor(repositorio) {
     this._repositorio = repositorio;
   }

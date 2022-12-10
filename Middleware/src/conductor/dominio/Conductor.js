@@ -1,1 +1,1 @@
-export class Conductor {}
+export default class Conductor {}

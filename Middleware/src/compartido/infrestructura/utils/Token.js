@@ -16,10 +16,3 @@ export function validarToken(req, res, next) {
     next();
   });
 }
-
-/*res.header('authorization', accessToken).json({
-    mensaje: 'Usuario auntenticado',
-    token: token
-});
-
-*/

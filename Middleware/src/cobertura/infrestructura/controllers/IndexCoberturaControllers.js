@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { param } from "express-validator";
-import { validarCampos } from "../../../compartido/infrestructura/utils/ValidarCampos.js";
-import { consultarCoberturaPorIdController } from "./ConsultarCoberturaPorIdController.js";
-import { consultarCoberturasController } from "./ConsultarCoberturasController.js";
+import validarCampos from "../../../compartido/infrestructura/utils/ValidarCampos.js";
+import consultarCoberturaPorIdController from "./ConsultarCoberturaPorIdController.js";
+import consultarCoberturasController from "./ConsultarCoberturasController.js";
 
-export class IndexCoberturaControllers {
+export default class IndexCoberturaControllers {
   constructor() {
     this.routers = Router();
   }

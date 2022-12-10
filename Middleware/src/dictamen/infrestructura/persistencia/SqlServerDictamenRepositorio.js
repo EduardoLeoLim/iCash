@@ -1,8 +1,8 @@
 import { Request, TYPES } from "tedious";
 import { SqlServerCriteriaParser } from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
-import { Dictamen } from "../../dominio/Dictamen.js";
+import Dictamen from "../../dominio/Dictamen.js";
 
-export class SqlServerDictamenRepositorio {
+export default class SqlServerDictamenRepositorio {
   constructor(conexion) {
     this.conexion = conexion;
   }

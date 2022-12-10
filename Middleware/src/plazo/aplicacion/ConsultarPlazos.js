@@ -1,6 +1,6 @@
 import { CriteriaBuilder } from "../../compartido/dominio/criteria/CriteriaBuilder";
 
-export class ConsultarPlazos {
+export default class ConsultarPlazos {
   constructor(repositorio) {
     this._repositorio = repositorio;
   }

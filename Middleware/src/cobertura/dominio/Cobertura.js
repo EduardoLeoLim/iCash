@@ -1,4 +1,4 @@
-export class Cobertura {
+export default class Cobertura {
   constructor(nombre, tipo, precio, id) {
     this.id = id;
     this.nombre = nombre;

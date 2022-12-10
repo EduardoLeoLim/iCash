@@ -1,4 +1,4 @@
-export class Vehiculo {
+export default class Vehiculo {
   constructor(año, color, modelo, idMarca, numPlacas, numSerie, idPoliza, id) {
     this.id = id;
     this.año = año;

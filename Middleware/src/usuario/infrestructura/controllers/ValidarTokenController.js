@@ -1,3 +1,3 @@
-export function validarTokenController(req, res) {
+export default function validarTokenController(req, res) {
   res.status(200).json();
 }

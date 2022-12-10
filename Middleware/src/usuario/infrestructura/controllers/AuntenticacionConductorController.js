@@ -1,10 +1,10 @@
 import { Connection } from "tedious";
 import { Config } from "../../../compartido/infrestructura/conexiones/Conexion.js";
 import { generarToken } from "../../../compartido/infrestructura/utils/Token.js";
-import { Auntenticacion } from "../../aplicacion/Auntenticacion.js";
-import { SqlServerUsuarioRepositorio } from "../persistencia/SqlServerUsuarioRepositorio.js";
+import Auntenticacion from "../../aplicacion/Auntenticacion.js";
+import SqlServerUsuarioRepositorio from "../persistencia/SqlServerUsuarioRepositorio.js";
 
-export function auntenticacionConductorController(req, res) {
+export default function auntenticacionConductorController(req, res) {
   const nombreUsuario = req.body.nombreUsuario;
   const claveAcceso = req.body.claveAcceso;
 

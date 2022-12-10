@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { param } from "express-validator";
-import { validarCampos } from "../../../compartido/infrestructura/utils/ValidarCampos.js";
-import { consultarReportesSiniestroAjustador } from "./ConsultarReportesSiniestroAjustador.js";
-import { registrarReporteSiniestroController } from "./RegistrarReporteSiniestroController.js";
+import validarCampos from "../../../compartido/infrestructura/utils/ValidarCampos.js";
+import consultarReportesSiniestroAjustador from "./ConsultarReportesSiniestroAjustador.js";
+import registrarReporteSiniestroController from "./RegistrarReporteSiniestroController.js";
 
-export class IndexReporteSiniestroControllers {
+export default class IndexReporteSiniestroControllers {
   constructor() {
     this.routers = Router();
   }

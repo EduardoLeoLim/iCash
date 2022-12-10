@@ -1,6 +1,6 @@
 import { CriteriaBuilder } from "../../compartido/dominio/criteria/CriteriaBuilder.js";
 
-export class ConsultarCoberturas {
+export default class ConsultarCoberturas {
   constructor(repositorio) {
     this.repositorio = repositorio;
   }

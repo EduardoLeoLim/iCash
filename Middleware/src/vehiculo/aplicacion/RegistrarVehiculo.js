@@ -1,6 +1,6 @@
-import { Vehiculo } from "../dominio/Vehiculo.js";
+import Vehiculo from "../dominio/Vehiculo.js";
 
-export class RegistrarVehiculo {
+export default class RegistrarVehiculo {
   constructor(repositorio) {
     this.repositorio = repositorio;
   }

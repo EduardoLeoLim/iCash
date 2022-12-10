@@ -1,6 +1,6 @@
 import { CriteriaBuilder } from "../../compartido/dominio/criteria/CriteriaBuilder.js";
 
-export class ConsultarEntidadesFederativas {
+export default class ConsultarEntidadesFederativas {
   constructor(repositorio) {
     this._repositorio = repositorio;
   }

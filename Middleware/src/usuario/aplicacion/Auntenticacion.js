@@ -1,5 +1,5 @@
 import { CriteriaBuilder } from "../../compartido/dominio/criteria/CriteriaBuilder.js";
-import { ResourceNotFoundError } from "../../compartido/aplicacion/excepciones/ResourceNotFoundError.js";
+import ResourceNotFoundError from "../../compartido/aplicacion/excepciones/ResourceNotFoundError.js";
 
 export const Rol = {
   Conductor: 1,
@@ -8,7 +8,7 @@ export const Rol = {
   EjecutivoAsistencia: 4,
 };
 
-export class Auntenticacion {
+export default class Auntenticacion {
   constructor(repositorio) {
     this._repositorio = repositorio;
   }

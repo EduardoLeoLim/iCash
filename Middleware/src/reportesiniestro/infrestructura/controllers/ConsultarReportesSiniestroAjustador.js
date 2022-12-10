@@ -3,7 +3,7 @@ import { Config } from "../../../compartido/infrestructura/conexiones/Conexion.j
 import SqlServerReporteSiniestroRepositorio from "../persistencia/SqlServerReporteSiniestroRepositorio.js";
 import ConsultarReportesSiniestroPorAsignacion from "../../aplicacion/ConsultarReportesSiniestroPorAsignacion.js";
 
-export function consultarReportesSiniestroAjustador(req, res) {
+export default function consultarReportesSiniestroAjustador(req, res) {
   const idEmpleado = req.params["idEmpleado"];
   let conexion = new Connection(Config);
 

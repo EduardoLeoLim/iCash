@@ -1,6 +1,6 @@
-import { ApplicationError } from "./ApplicationError.js";
+import ApplicationError from "./ApplicationError.js";
 
-export class ResourceNotFoundError extends ApplicationError {
+export default class ResourceNotFoundError extends ApplicationError {
   constructor(message) {
     if (message) {
       super(404, message);

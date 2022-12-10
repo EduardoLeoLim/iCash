@@ -1,4 +1,4 @@
-export class EntidadFederativa {
+export default class EntidadFederativa {
   constructor(clave, nombre, id) {
     this.clave = clave;
     this.nombre = nombre;

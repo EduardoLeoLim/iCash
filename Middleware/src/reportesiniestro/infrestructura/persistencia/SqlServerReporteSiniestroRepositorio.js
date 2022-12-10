@@ -1,4 +1,4 @@
-import { SqlServerCriteriaParser } from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
+import SqlServerCriteriaParser from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
 import { Request, TYPES } from "tedious";
 import ReporteSiniestro from "../../dominio/ReporteSiniestro.js";
 

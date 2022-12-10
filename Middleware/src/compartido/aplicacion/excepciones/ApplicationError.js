@@ -1,4 +1,4 @@
-export class ApplicationError extends Error {
+export default class ApplicationError extends Error {
   constructor(status, error) {
     if (error) {
       super(error);

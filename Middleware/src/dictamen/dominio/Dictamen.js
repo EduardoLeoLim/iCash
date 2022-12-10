@@ -1,4 +1,4 @@
-export class Dictamen {
+export default class Dictamen {
   constructor(folio, fecha, descripcion, idReporteSiniestro, id) {
     this.folio = folio;
     this.fecha = fecha;

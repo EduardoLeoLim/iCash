@@ -4,12 +4,12 @@ import dotenv from "dotenv";
 import fileUpload from "express-fileupload";
 import helmet from "helmet";
 import morgan from "morgan";
-import { IndexCoberturaControllers } from "./cobertura/infrestructura/controllers/IndexCoberturaControllers.js";
-import { IndexConductorControllers } from "./conductor/infrestructura/controllers/IndexConductorControllers.js";
-import { IndexEntidadFederativaControllers } from "./entidadfederativa/infrestructura/controllers/IndexEntidadFederativaControllers.js";
-import { IndexMuncipioControllers } from "./municipio/infrestructura/controllers/IndexMunicipioControllers.js";
-import { IndexUsuarioControllers } from "./usuario/infrestructura/controllers/IndexUsuarioControllers.js";
-import { IndexReporteSiniestroControllers } from "./reportesiniestro/infrestructura/controllers/IndexReporteSiniestroControllers.js";
+import IndexCoberturaControllers from "./cobertura/infrestructura/controllers/IndexCoberturaControllers.js";
+import IndexConductorControllers from "./conductor/infrestructura/controllers/IndexConductorControllers.js";
+import IndexEntidadFederativaControllers from "./entidadfederativa/infrestructura/controllers/IndexEntidadFederativaControllers.js";
+import IndexMuncipioControllers from "./municipio/infrestructura/controllers/IndexMunicipioControllers.js";
+import IndexUsuarioControllers from "./usuario/infrestructura/controllers/IndexUsuarioControllers.js";
+import IndexReporteSiniestroControllers from "./reportesiniestro/infrestructura/controllers/IndexReporteSiniestroControllers.js";
 
 export class App {
   constructor() {
