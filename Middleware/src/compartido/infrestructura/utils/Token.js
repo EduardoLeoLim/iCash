@@ -6,14 +6,12 @@ export function generarToken(usuario) {
 
 export function validarToken(req, res, next) {
   const accessToken = req.headers["authorization"];
-  if (!accessToken) res.send("Acceso denegado");
+  if (!accessToken) return res.status(401).send("Acceso denegado");
 
-  jwt.verify(accessToken, process.env.SECRET, (err, usuario) => {
-    if (err) {
-      res.send("Acceso denegado, token expirado o incorrecto");
-    } else {
-      next();
-    }
+  jwt.verify(accessToken, process.env.SECRET, (error, usuario) => {
+    if (error)
+      return res.status(401).send("Acceso denegado, token expirado o incorrecto");
+    next()
   });
 }
 
