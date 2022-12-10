@@ -24,11 +24,12 @@ export function auntenticacionConductorController(req, res) {
       .auntenticacionConductor(nombreUsuario, claveAcceso)
       .then((usuario) => {
         const token = generarToken(usuario);
-        res.setHeader("authorization", token);
+        res.header("Access-Control-Expose-Headers", "Authorization")
+        res.header("Authorization", [token]);
         res.status(200).json(usuario);
       })
       .catch((error) => {
-        res.status(error.status).json(error);
+        res.status(401).json(error);
         //Checar el numero de status del error y mensaje a poner
       })
       .finally(() => {
