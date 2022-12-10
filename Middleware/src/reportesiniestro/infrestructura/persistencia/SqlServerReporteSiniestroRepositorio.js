@@ -13,7 +13,7 @@ export default class SqlServerReporteSiniestroRepositorio {
 
       let criteriaParser = new SqlServerCriteriaParser(
         [],
-        "ReporteSiniestro",
+        "ReporteSiniestroDetalle",
         criteria
       );
       let { consulta, parameters } = criteriaParser.parse();
