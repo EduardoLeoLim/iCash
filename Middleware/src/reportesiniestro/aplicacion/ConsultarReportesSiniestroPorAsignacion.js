@@ -1,7 +1,6 @@
-import { ResourceNotFoundError } from "../../compartido/aplicacion/excepciones/ResourceNotFoundError.js";
 import { CriteriaBuilder } from "../../compartido/dominio/criteria/CriteriaBuilder.js";
 
-export class ConsultarReportesSiniestroPorAsignacion {
+export default class ConsultarReportesSiniestroPorAsignacion {
   constructor(repositorio) {
     this._repositorio = repositorio;
   }
@@ -16,13 +15,7 @@ export class ConsultarReportesSiniestroPorAsignacion {
       this._repositorio
         .buscar(criteria)
         .then((dictamenes) => {
-          if (dictamenes.length > 0) {
-            resolve(dictamenes);
-          } else {
-            reject(
-              new ResourceNotFoundError("No se encontraron reportes asignados")
-            );
-          }
+          resolve(dictamenes);
         })
         .catch((error) => reject(error));
     });
