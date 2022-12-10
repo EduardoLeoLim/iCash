@@ -21,7 +21,8 @@ export class Auntenticacion {
         .obligatory()
         .equal("claveAcceso", contrasena)
         .obligatory()
-        .equal("role", Rol.Conductor).obligatory()
+        .equal("role", Rol.Conductor)
+        .obligatory()
         .build();
 
       this._repositorio

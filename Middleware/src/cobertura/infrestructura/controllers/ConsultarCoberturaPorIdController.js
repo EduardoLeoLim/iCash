@@ -27,7 +27,6 @@ export function consultarCoberturaPorIdController(req, res) {
       })
       .finally(() => {
         conexion.close();
-      })
+      });
   });
-
 }

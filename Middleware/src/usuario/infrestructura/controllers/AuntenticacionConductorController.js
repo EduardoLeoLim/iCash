@@ -24,7 +24,7 @@ export function auntenticacionConductorController(req, res) {
       .auntenticacionConductor(nombreUsuario, claveAcceso)
       .then((usuario) => {
         const token = generarToken(usuario);
-        res.header("Access-Control-Expose-Headers", "Authorization")
+        res.header("Access-Control-Expose-Headers", "Authorization");
         res.header("Authorization", [token]);
         res.status(200).json(usuario);
       })
