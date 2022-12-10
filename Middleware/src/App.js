@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import { IndexCoberturaControllers } from "./cobertura/infrestructura/controllers/IndexCoberturaControllers.js";
@@ -20,6 +21,7 @@ export class App {
     this.app.use(express.json());
     this.app.use(morgan("dev"));
     this.app.use(helmet());
+    this.app.use(cors())
     dotenv.config();
   }
 
