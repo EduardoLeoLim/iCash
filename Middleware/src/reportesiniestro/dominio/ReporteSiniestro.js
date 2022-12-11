@@ -4,6 +4,7 @@ export default class ReporteSiniestro {
     estatus,
     fechaRegistro,
     horaAccidente,
+    idMunicipio,
     latitud,
     longitud,
     nombreConductor,
@@ -16,6 +17,7 @@ export default class ReporteSiniestro {
     this.estatus = estatus;
     this.fecha = fechaRegistro;
     this.hora = horaAccidente;
+    this.idMunicipio = idMunicipio;
     this.latitud = latitud;
     this.longitud = longitud;
     this.conductor = {
