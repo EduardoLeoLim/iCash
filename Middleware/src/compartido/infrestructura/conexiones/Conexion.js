@@ -7,8 +7,8 @@ export var Config = {
       password: "012345",
     },
   },
-  options: {
-    database: "iCrash",
+  options: { 
+    database: "iCrash", 
     trustServerCertificate: true,
     rowCollectionOnDone: true,
     useColumnNames: true,

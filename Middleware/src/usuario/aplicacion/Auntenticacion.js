@@ -36,4 +36,27 @@ export class Auntenticacion {
     });
 
   //BLAS - Agregar metodo para autenticacionAjustador
+
+  auntenticacionAjustador = (usuario, contrasena) =>
+    new Promise((resolve, reject) => {
+      let criteria = new CriteriaBuilder()
+        .orderAsc("id")
+        .equal("nombreUsuario", usuario)
+        .obligatory()
+        .equal("claveAcceso", contrasena)
+        .obligatory()
+        .equal("role", Rol.Ajustador)
+        .build();
+
+      this._repositorio
+        .buscar(criteria)
+        .then((usuarios) => {
+          if (usuarios.length > 0) {
+            resolve(usuarios[0]);
+          } else {
+            reject(new ResourceNotFoundError("Credenciales inválidas"));
+          }
+        })
+        .catch((error) => reject(error));
+    });
 }
