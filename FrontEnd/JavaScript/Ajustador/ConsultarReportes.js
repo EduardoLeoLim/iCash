@@ -1,8 +1,6 @@
-const ID_REPORTE = 0;
+let ID_REPORTE = 0;
 
-function mostrarDatosPoliza() {
-    //Lina 3 borrar cuando se tenga login Ajustador
-    sessionStorage.setItem("idEmpleado", 1);
+function mostrarDatosReporte() {
     const idEmpleado = sessionStorage.getItem("idEmpleado");
     return new Promise(function(res, rej){
         axios.get(URL_BASE+'/ajustadores/'+idEmpleado+'/reportesSiniestro')
@@ -42,17 +40,38 @@ function consultarReporte() {
     ID_REPORTE = tds[0].innerHTML.trim()
 }
 
+function filtrar() {
+    var input, filtro, tabla, tr, td, i, txtValor;
+    input = document.getElementById("filtro");
+    filtro = input.value.toUpperCase();
+    tabla = document.getElementById("reportes");
+    tr = tabla.getElementsByTagName("tr");
+
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[2];
+        if (td) {
+          txtValor = td.textContent || td.innerText;
+          if (txtValor.toUpperCase().indexOf(filtro) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+    }
+}
+
 function cambiarVentana() {
     if (ID_REPORTE == 0) {
         alert("Debe seleccionar un reporte para consultarlo")
     } else {
+        sessionStorage.setItem("idReporteSiniestro", ID_REPORTE)
         location.href = "../../HTML/Ajustador/VerDetallesReporte.html";
     }
 }
 
 window.onload = function(){
-    //Descomentar linea 43 cuando se tenga login Ajustador
-    //existenValoresStorage("../../HTML/Conductor/InicioSesion.html")
-    mostrarDatosPoliza()
+    existenValoresStorage("../../HTML/Conductor/InicioSesion.html")
+    mostrarDatosReporte()
+    filtrar()
     document.getElementById("verDetalles").onclick = cambiarVentana;
 };
