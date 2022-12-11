@@ -10,6 +10,7 @@ import IndexEntidadFederativaControllers from "./entidadfederativa/infrestructur
 import IndexMuncipioControllers from "./municipio/infrestructura/controllers/IndexMunicipioControllers.js";
 import IndexUsuarioControllers from "./usuario/infrestructura/controllers/IndexUsuarioControllers.js";
 import IndexReporteSiniestroControllers from "./reportesiniestro/infrestructura/controllers/IndexReporteSiniestroControllers.js";
+import IndexDictamenControllers from "./dictamen/infrestructura/controllers/IndexDictamenControllers.js";
 
 export class App {
   constructor() {
@@ -52,6 +53,9 @@ export class App {
     this.app.use(municipioController.routers);
 
     //Dictamen
+    let dictamenControllers = new IndexDictamenControllers();
+    dictamenControllers.loadControllers();
+    this.app.use(dictamenControllers.routers);
 
     //Empleado
 
