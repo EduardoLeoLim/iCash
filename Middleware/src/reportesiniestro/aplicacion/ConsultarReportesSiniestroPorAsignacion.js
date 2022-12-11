@@ -14,8 +14,8 @@ export default class ConsultarReportesSiniestroPorAsignacion {
 
       this._repositorio
         .buscar(criteria)
-        .then((dictamenes) => {
-          resolve(dictamenes);
+        .then((reportes) => {
+          resolve(reportes);
         })
         .catch((error) => reject(error));
     });

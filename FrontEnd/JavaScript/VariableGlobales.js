@@ -1,1 +1,1 @@
-const URL_BASE = "http://25.1.116.116:8000"
+const URL_BASE = "http://localhost:8000"
