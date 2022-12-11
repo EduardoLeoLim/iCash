@@ -1,5 +1,5 @@
 import { Request, TYPES } from "tedious";
-import { SqlServerCriteriaParser } from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
+import SqlServerCriteriaParser from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
 import Dictamen from "../../dominio/Dictamen.js";
 
 export default class SqlServerDictamenRepositorio {
