@@ -39,10 +39,18 @@ export default class SqlServerReporteSiniestroRepositorio {
       });
 
       request.on("row", (columnas) => {
-        let reporteSiniestro = new ReporteSiniestro();
-        for (let name in columnas) {
-          reporteSiniestro[name] = columnas[name].value;
-        }
+        console.log(columnas)
+        let id = columnas.id.value;
+        let nombre = columnas.nombre.value;
+        let estatus = columnas.estatus.value;
+        let fecha = columnas.fecha.value;
+        let conductor = columnas.nombreConductor.value 
+        let apellidoPaterno = columnas.apellidoPaterno.value 
+        let apellidoMaterno = columnas.apellidoMaterno.value;
+        let idConductor = columnas.idConductor.value;
+        let latitud = columnas.latitud.value;
+        let longitud = columnas.longitud.value;
+        let reporteSiniestro = new ReporteSiniestro(nombre, estatus, fecha, latitud, longitud, conductor, apellidoPaterno, apellidoMaterno, idConductor, id);
         reportesSiniestro.push(reporteSiniestro);
       });
 
