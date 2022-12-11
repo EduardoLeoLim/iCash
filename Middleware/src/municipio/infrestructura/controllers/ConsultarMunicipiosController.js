@@ -1,11 +1,11 @@
 import { Connection } from "tedious";
 import { Config } from "../../../compartido/infrestructura/conexiones/Conexion.js";
-import { ConsultarEntidadFederativaPorClave } from "../../../entidadfederativa/aplicacion/ConsultarEntidadFederativaPotClave.js";
-import { SqlServerEntidadFederativaRepositorio } from "../../../entidadfederativa/infrestructura/persistencia/SqlServerEntidadFederativaRepositorio.js";
-import { ConsultarMunicipioPorEntidadFederativa } from "../../aplicacion/ConsultarMunicipiosPorEntidadFederativa.js";
-import { SqlServerMunicipioRepositorio } from "../persistencia/SqlServerMunicipioRepositorio.js";
+import ConsultarEntidadFederativaPorClave from "../../../entidadfederativa/aplicacion/ConsultarEntidadFederativaPotClave.js";
+import SqlServerEntidadFederativaRepositorio from "../../../entidadfederativa/infrestructura/persistencia/SqlServerEntidadFederativaRepositorio.js";
+import ConsultarMunicipioPorEntidadFederativa from "../../aplicacion/ConsultarMunicipiosPorEntidadFederativa.js";
+import SqlServerMunicipioRepositorio from "../persistencia/SqlServerMunicipioRepositorio.js";
 
-export function consultarMunicipiosController(req, res) {
+export default function consultarMunicipiosController(req, res) {
   let claveEntidadFederativa = req.params["claveEntidadFederativa"];
   let conexion = new Connection(Config);
 

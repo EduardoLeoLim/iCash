@@ -1,8 +1,8 @@
-import { Marca } from "../../dominio/Marca.js";
+import Marca from "../../dominio/Marca.js";
 import { TYPES, Request } from "tedious";
 import { SqlServerCriteriaParser } from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
 
-export class SqlExpressMarcaRepositorio {
+export default class SqlExpressMarcaRepositorio {
   constructor(conexion) {
     this.conexion = conexion;
   }

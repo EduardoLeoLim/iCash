@@ -1,8 +1,8 @@
 import { Request, TYPES } from "tedious";
-import { SqlServerCriteriaParser } from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
-import { Municipio } from "../../dominio/Municipio.js";
+import SqlServerCriteriaParser from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
+import Municipio from "../../dominio/Municipio.js";
 
-export class SqlServerMunicipioRepositorio {
+export default class SqlServerMunicipioRepositorio {
   constructor(conexion) {
     this.conexion = conexion;
   }

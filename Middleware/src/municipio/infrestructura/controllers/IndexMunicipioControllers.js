@@ -1,9 +1,9 @@
 import { Router } from "express";
 import { param } from "express-validator";
-import { validarCampos } from "../../../compartido/infrestructura/utils/ValidarCampos.js";
-import { consultarMunicipiosController } from "./ConsultarMunicipiosController.js";
+import validarCampos from "../../../compartido/infrestructura/utils/ValidarCampos.js";
+import consultarMunicipiosController from "./ConsultarMunicipiosController.js";
 
-export class IndexMuncipioControllers {
+export default class IndexMuncipioControllers {
   constructor() {
     this.routers = Router();
   }

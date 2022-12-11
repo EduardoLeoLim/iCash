@@ -7,8 +7,8 @@
     <script type="text/javascript" src="../../JavaScript/VariableGlobales.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="text/javascript" src="../../JavaScript/comprobarSessionStorage.js"></script>
-    <script type="" src=".js"></script>
-    <link rel="stylesheet" href=".css">
+    <script type="text/javascript" src="../../JavaScript/Ajustador/ConsultarReportes.js"></script>
+    <!--<link rel="stylesheet" href=".css">-->
 </head>
 
 <body>
@@ -17,23 +17,17 @@
     </header>
     <main>
         <div style="text-align: center;">
-            <table border="1">
-                <caption>Reportes</caption>
+            <table id="reportes" border="1">
+                <caption>Reportes asignados</caption>
                 <tr>
-                    <th>Fecha Accidente</th>
-                    <th>NombrePropietario</th>
-                    <th>Automovil</th>
-                </tr>
-                <tr>
-                    <td>Celda 1</td>
-                    <td>Celda 2</td>
-                    <td>Celda 3</td>
+                    <th>Id reporte</th>
+                    <th>Nombre de reporte</th>
+                    <th>Estatus</th>
+                    <th>Fecha de registro</th>
+                    <th>Conductor</th>
                 </tr>
             </table>
-            <button style="width:80px;height:100px;" onclick="location.href='ConsultarReportes.html'">
-                Dictaminar reporte
-            </button>
-            <button style="width:80px;height:100px;" onclick="location.href='ConsultarReportes.html'">
+            <button id="verDetalles" style="width:80px;height:100px;">
                 Ver datalles reporte
             </button>
         </div>

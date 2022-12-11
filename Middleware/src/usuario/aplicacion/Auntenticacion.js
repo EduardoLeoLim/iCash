@@ -1,4 +1,5 @@
 import { CriteriaBuilder } from "../../compartido/dominio/criteria/CriteriaBuilder.js";
+import ResourceNotFoundError from "../../compartido/aplicacion/excepciones/ResourceNotFoundError.js";
 
 export const Rol = {
   Conductor: 1,
@@ -7,7 +8,7 @@ export const Rol = {
   EjecutivoAsistencia: 4,
 };
 
-export class Auntenticacion {
+export default class Auntenticacion {
   constructor(repositorio) {
     this._repositorio = repositorio;
   }
@@ -21,6 +22,7 @@ export class Auntenticacion {
         .equal("claveAcceso", contrasena)
         .obligatory()
         .equal("role", Rol.Conductor)
+        .obligatory()
         .build();
 
       this._repositorio

@@ -1,4 +1,4 @@
-export class Involucrado {
+export default class Involucrado {
   constructor(nombre, idReporteSiniestro, idVehiculo, id) {
     this.nombre = nombre;
     this.idReporteSiniestro = idReporteSiniestro;

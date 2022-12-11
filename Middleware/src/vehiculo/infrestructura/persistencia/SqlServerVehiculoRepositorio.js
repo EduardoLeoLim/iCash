@@ -1,8 +1,8 @@
 import { TYPES } from "tedious";
 import { SqlServerCriteriaParser } from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
-import { Vehiculo } from "../../dominio/Vehiculo.js";
+import Vehiculo from "../../dominio/Vehiculo.js";
 
-export class SqlServerVehiculoRepositorio {
+export default class SqlServerVehiculoRepositorio {
   constructor(conexion) {
     this.conexion = conexion;
   }

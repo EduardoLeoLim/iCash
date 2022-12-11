@@ -1,8 +1,8 @@
 import { Request } from "tedious";
 import { SqlServerCriteriaParser } from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
-import { Involucrado } from "../../dominio/Involucrado.js";
+import Involucrado from "../../dominio/Involucrado.js";
 
-export class SqlServerInvolucradoRepositorio {
+export default class SqlServerInvolucradoRepositorio {
   constructor(conexion) {
     this.conexion = conexion;
   }

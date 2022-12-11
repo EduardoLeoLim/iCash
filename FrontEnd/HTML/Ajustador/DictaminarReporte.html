@@ -7,8 +7,7 @@
     <script type="text/javascript" src="../../JavaScript/VariableGlobales.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="text/javascript" src="../../JavaScript/comprobarSessionStorage.js"></script>
-    <script type="" src=".js"></script>
-    <link rel="stylesheet" href=".css">
+    <script type="text/javascript" src="../../JavaScript/Ajustador/DictaminarReporte.js"></script>
 </head>
 
 <body>
@@ -17,23 +16,17 @@
     </header>
 
     <main>
-        <label>Descripcion:</label>
-        <input>
+        <label  id="lbDescripcion" >Descripcion:</label>
+        <textarea maxlength="250"  style="height:75px; width:600px;  font-size:12pt;" id = "txaDescripcion"></textarea>
         <br>
         <br>
-        <label>Fecha:</label>
-        <input>
+        <label id="lbFecha" type="date">Fecha:</label>
+        <input type="date" id="inputDate" name="trip-start"
+                min="2022-01-01">
         <br>
         <br>
-        <label>folio:</label>
-        <input>
-        <br>
-        <br>
-        <label>hora:</label>
-        <input>
-        <br>
-        <br>
-        <button> Dictaminar </button>
+
+        <button id="btnDictaminar"> Dictaminar </button>
 
     </main>
 </body>

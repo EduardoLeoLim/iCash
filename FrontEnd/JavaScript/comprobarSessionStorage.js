@@ -4,12 +4,11 @@ function existenValoresStorage(direccion){
         return;
     }
 
-    const config = {
-        Headers: {
-            authorization: sessionStorage.getItem("token")
+    axios.get(URL_BASE+"/validarToken", {
+        headers: {
+            'Authorization': sessionStorage.getItem("token")
         }
-    }
-    axios.get(URL_BASE+"/validarToken", config)
+    })
         .then(function (response){
         })
         .catch(function (){

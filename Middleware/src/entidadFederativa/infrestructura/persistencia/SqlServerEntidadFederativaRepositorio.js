@@ -1,8 +1,8 @@
 import { Request, TYPES } from "tedious";
-import { SqlServerCriteriaParser } from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
-import { EntidadFederativa } from "../../dominio/EntidadFederativa.js";
+import SqlServerCriteriaParser from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
+import EntidadFederativa from "../../dominio/EntidadFederativa.js";
 
-export class SqlServerEntidadFederativaRepositorio {
+export default class SqlServerEntidadFederativaRepositorio {
   constructor(conexion) {
     this.conexion = conexion;
   }

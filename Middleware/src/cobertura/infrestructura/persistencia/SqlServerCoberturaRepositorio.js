@@ -1,8 +1,8 @@
 import { Request, TYPES } from "tedious";
-import { SqlServerCriteriaParser } from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
-import { Cobertura } from "../../dominio/Cobertura.js";
+import SqlServerCriteriaParser from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
+import Cobertura from "../../dominio/Cobertura.js";
 
-export class SqlServerCoberturaRepositorio {
+export default class SqlServerCoberturaRepositorio {
   constructor(conexion) {
     this.conexion = conexion;
   }

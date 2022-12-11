@@ -1,25 +1,18 @@
-import jsonwebtoken from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
 export function generarToken(usuario) {
-  return jwt.sign(usuario, process.env.SECRET, { expiresIn: "30m" });
+  return jwt.sign({ usuario }, process.env.SECRET, { expiresIn: "30m" });
 }
 
 export function validarToken(req, res, next) {
   const accessToken = req.headers["authorization"];
-  if (!accesToken) res.send("Acceso denegado");
+  if (!accessToken) return res.status(401).send("Acceso denegado");
 
-  jwt.verify(accessToken, process.env.SECRET, (err, usuario) => {
-    if (err) {
-      res.send("Acceso denegado, token expirado o incorrecto");
-    } else {
-      next();
-    }
+  jwt.verify(accessToken, process.env.SECRET, (error, usuario) => {
+    if (error)
+      return res
+        .status(401)
+        .send("Acceso denegado, token expirado o incorrecto");
+    next();
   });
 }
-
-/*res.header('authorization', accessToken).json({
-    mensaje: 'Usuario auntenticado',
-    token: token
-});
-
-*/

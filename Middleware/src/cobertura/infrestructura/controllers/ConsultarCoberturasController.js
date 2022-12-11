@@ -1,9 +1,9 @@
 import { Connection } from "tedious";
 import { Config } from "../../../compartido/infrestructura/conexiones/Conexion.js";
-import { ConsultarCoberturas } from "../../aplicacion/ConsultarCoberturas.js";
-import { SqlServerCoberturaRepositorio } from "../persistencia/SqlServerCoberturaRepositorio.js";
+import ConsultarCoberturas from "../../aplicacion/ConsultarCoberturas.js";
+import SqlServerCoberturaRepositorio from "../persistencia/SqlServerCoberturaRepositorio.js";
 
-export function consultarCoberturasController(req, res) {
+export default function consultarCoberturasController(req, res) {
   let conexion = new Connection(Config);
 
   conexion.connect((err) => {

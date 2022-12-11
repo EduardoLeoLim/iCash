@@ -1,9 +1,9 @@
 import { Connection } from "tedious";
 import { Config } from "../../../compartido/infrestructura/conexiones/Conexion.js";
-import { ConsultarEntidadesFederativas } from "../../aplicacion/ConsultarEntidadesFederativas.js";
-import { SqlServerEntidadFederativaRepositorio } from "../persistencia/SqlServerEntidadFederativaRepositorio.js";
+import ConsultarEntidadesFederativas from "../../aplicacion/ConsultarEntidadesFederativas.js";
+import SqlServerEntidadFederativaRepositorio from "../persistencia/SqlServerEntidadFederativaRepositorio.js";
 
-export function consultarEntidadesFederativasController(req, res) {
+export default function consultarEntidadesFederativasController(req, res) {
   let limit = req.query.limit;
   let offset = req.query.offset;
 
