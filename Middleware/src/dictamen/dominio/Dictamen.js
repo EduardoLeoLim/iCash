@@ -1,6 +1,5 @@
 export default class Dictamen {
-  constructor(folio, fecha, descripcion, idReporteSiniestro, id) {
-    this.folio = folio;
+  constructor(fecha, descripcion, idReporteSiniestro, id) {
     this.fecha = fecha;
     this.descripcion = descripcion;
     this.idReporteSiniestro = idReporteSiniestro;
