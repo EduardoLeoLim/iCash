@@ -2,7 +2,8 @@ export default class ReporteSiniestro {
   constructor(
     nombre,
     estatus,
-    fecha,
+    fechaRegistro,
+    horaAccidente,
     latitud,
     longitud,
     nombreConductor,
@@ -13,7 +14,8 @@ export default class ReporteSiniestro {
   ) {
     this.nombre = nombre;
     this.estatus = estatus;
-    this.fecha = fecha;
+    this.fecha = fechaRegistro;
+    this.hora = horaAccidente;
     this.latitud = latitud;
     this.longitud = longitud;
     this.conductor = {
