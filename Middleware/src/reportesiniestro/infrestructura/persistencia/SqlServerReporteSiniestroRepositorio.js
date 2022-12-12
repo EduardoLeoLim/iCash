@@ -1,6 +1,7 @@
 import SqlServerCriteriaParser from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
 import { Request, TYPES } from "tedious";
 import ReporteSiniestro from "../../dominio/ReporteSiniestro.js";
+import ApplicationError from "../../../compartido/aplicacion/excepciones/ApplicationError.js";
 
 export default class SqlServerReporteSiniestroRepositorio {
   constructor(conexion) {
@@ -23,7 +24,9 @@ export default class SqlServerReporteSiniestroRepositorio {
       let request = new Request(consulta, (error, rowCount) => {
         if (error) {
           console.log("Error ReporteSiniestroRepositorio: " + error);
-          reject(new Error("Error base de datos"));
+          reject(
+            new ApplicationError(500, "Error al buscar reportes de siniestro")
+          );
         } else {
           console.log(rowCount + " filas");
           resolve(reportesSiniestro);
@@ -44,14 +47,31 @@ export default class SqlServerReporteSiniestroRepositorio {
         let estatus = columnas.estatus.value;
         let fecha = columnas.fechaRegistro.value;
         let hora = columnas.horaAccidente.value;
-        let conductor = columnas.nombreConductor.value
+        let idEmpleado = columnas.idEmpleado.value;
+        let idDictamen = columnas.idDictamen.value;
+        let conductor = columnas.nombreConductor.value;
         let idMunicipio = columnas.idMunicipio.value;
-        let apellidoPaterno = columnas.apellidoPaterno.value 
+        let apellidoPaterno = columnas.apellidoPaterno.value;
         let apellidoMaterno = columnas.apellidoMaterno.value;
         let idConductor = columnas.idConductor.value;
         let latitud = columnas.latitud.value;
         let longitud = columnas.longitud.value;
-        let reporteSiniestro = new ReporteSiniestro(nombre, estatus, fecha, hora, idMunicipio, latitud, longitud, conductor, apellidoPaterno, apellidoMaterno, idConductor, id);
+        let reporteSiniestro = new ReporteSiniestro(
+          nombre,
+          estatus,
+          fecha,
+          hora,
+          idMunicipio,
+          latitud,
+          longitud,
+          idEmpleado,
+          idDictamen,
+          conductor,
+          apellidoPaterno,
+          apellidoMaterno,
+          idConductor,
+          id
+        );
         reportesSiniestro.push(reporteSiniestro);
       });
 

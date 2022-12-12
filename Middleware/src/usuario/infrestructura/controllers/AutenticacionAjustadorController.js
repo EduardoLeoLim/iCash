@@ -10,7 +10,7 @@ export default function auntenticacionAjustadorController(req, res) {
 
   let conexion = new Connection(Config);
 
-  conexion.connect((err) => { 
+  conexion.connect((err) => {
     if (err) {
       console.log("Error: ", err);
       res.status(500).json();

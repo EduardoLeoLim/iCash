@@ -8,10 +8,7 @@ export default class ConsultarReporteSiniestroPorId {
 
   run = (id) =>
     new Promise((resolve, reject) => {
-      let criteria = new CriteriaBuilder()
-        .equal("id", id)
-        .obligatory()
-        .build();
+      let criteria = new CriteriaBuilder().equal("id", id).obligatory().build();
 
       this._repositorio
         .buscar(criteria)
@@ -19,7 +16,9 @@ export default class ConsultarReporteSiniestroPorId {
           if (reportes.length > 0) {
             resolve(reportes[0]);
           } else {
-            reject(new ResourceNotFoundError("Reporte de siniestro no encontrado"));
+            reject(
+              new ResourceNotFoundError("Reporte de siniestro no encontrado")
+            );
           }
         })
         .catch((error) => reject(error));
