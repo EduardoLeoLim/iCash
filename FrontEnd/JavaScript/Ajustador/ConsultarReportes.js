@@ -70,7 +70,7 @@ function cambiarVentana() {
 }
 
 window.onload = function(){
-    existenValoresStorage("../../HTML/Conductor/InicioSesion.html")
+    existenValoresStorage("../../HTML/Ajustador/LoginAjustador.html")
     mostrarDatosReporte()
     filtrar()
     document.getElementById("verDetalles").onclick = cambiarVentana;

@@ -7,7 +7,7 @@ export default class SqlServerUsuarioRepositorio {
     this.conexion = conexion;
   }
 
-  buscar = (criteria) =>
+  buscar = (criteria) => 
     new Promise((resolve, reject) => {
       let usuarios = [];
 

@@ -2,7 +2,7 @@ import { CriteriaBuilder } from "../../compartido/dominio/criteria/CriteriaBuild
 import ResourceNotFoundError from "../../compartido/aplicacion/excepciones/ResourceNotFoundError.js";
 
 export const Rol = {
-  Conductor: 1,
+  Conductor: 1, 
   Ajustador: 2,
   Administrador: 3,
   EjecutivoAsistencia: 4,
@@ -47,7 +47,7 @@ export default class Auntenticacion {
         .obligatory()
         .equal("claveAcceso", contrasena)
         .obligatory()
-        .equal("role", Rol.Ajustador)
+        .equal("role", Rol.Ajustador).obligatory()
         .build();
 
       this._repositorio
