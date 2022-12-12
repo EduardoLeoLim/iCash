@@ -17,7 +17,7 @@ function mostrarDatosReporte() {
 function agregarValoresStorage(data) {
     data.forEach(reporte => {
         let idReporte = reporte.id;
-        let nombre = reporte.nombre;
+        let nombre = reporte.nombre; 
         let estatus = reporte.estatus;
         let fechaRegistro = reporte.fecha;
         let conductor = reporte.conductor.nombre;

@@ -1,6 +1,6 @@
 import { CriteriaBuilder } from "../../compartido/dominio/criteria/CriteriaBuilder.js";
 
-export default class ConsultarReportesSiniestroPorAsignacion {
+export default class VerDetallesReporteSiniestro {
   constructor(repositorio) {
     this._repositorio = repositorio;
   }
@@ -8,7 +8,7 @@ export default class ConsultarReportesSiniestroPorAsignacion {
   run = (idEmpleado) => 
     new Promise((resolve, reject) => {
       let criteria = new CriteriaBuilder()
-        .equal("idEmpleado", idEmpleado) 
+        .equal("idReporte", idReporte) 
         .obligatory()
         .build();
 
