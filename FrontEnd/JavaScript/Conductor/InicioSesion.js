@@ -5,7 +5,7 @@ function iniciarSesion() {
     if (usuario != "" && contrasenia != "") {
         comprobarCredenciales(usuario, contrasenia)
         .then(function(){
-            location.href = "../../HTML/Conductor/ModificarCuenta.html";
+            location.href = "../../HTML/Conductor/RegistrarReporte.html";
         })
         .catch(function (error){{
             alert("Credenciales invalidas");
@@ -37,6 +37,7 @@ function agregarValoresStorage(response){
     sessionStorage.setItem("nombreUsuario", response.data.nombreUsuario)
     sessionStorage.setItem("contrasena", response.data.claveAcceso)
     sessionStorage.setItem("idUsuario", response.data.id)
+    sessionStorage.setItem("idConductor", response.data.idConductor)
 }
 
 window.onload = function(){
