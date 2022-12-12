@@ -16,6 +16,11 @@ function existenValoresStorage(direccion){
             sessionStorage.removeItem("nombreUsuario");
             sessionStorage.removeItem("idUsuario");
             sessionStorage.removeItem("contrasena");
+            if(sessionStorage.getItem("idEmpleado") === null){
+                sessionStorage.removeItem("idConductor");
+            }else{
+                sessionStorage.removeItem("idEmpleado");
+            }
             window.open(direccion, "_self");
         })
 }
