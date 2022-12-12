@@ -7,7 +7,7 @@ export default function consultarEntidadesFederativasController(req, res) {
   let limit = req.query.limit;
   let offset = req.query.offset;
 
-  let conexion = new Connection(Config);
+  let conexion = new Connection(Config); 
 
   conexion.connect((err) => {
     if (err) {

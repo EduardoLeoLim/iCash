@@ -1,4 +1,4 @@
-import { CriteriaBuilder } from './../../compartido/dominio/criteria/CriteriaBuilder';
+import { CriteriaBuilder } from './../../compartido/dominio/criteria/CriteriaBuilder.js';
 
 export default class ConsultarImagenesDeReporte {
 

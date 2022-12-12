@@ -1,5 +1,7 @@
+import { Request, TYPES } from "tedious";
+import SqlServerCriteriaParser from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
+import Imagen from './../../dominio/Imagen.js';
 
-import Imagen from './../../dominio/Imagen';
 export default class SqlServerImagenRepositorio {
 
     constructor(conexion) {

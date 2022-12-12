@@ -1,4 +1,4 @@
-
+import { CriteriaBuilder } from '../../compartido/dominio/criteria/CriteriaBuilder.js';
 import ResourceNotFoundError from './../../compartido/aplicacion/excepciones/ResourceNotFoundError.js';
 
 export default class ConsultarPlazoPorId {

@@ -1,4 +1,5 @@
 import { Request, TYPES } from "tedious";
+import ApplicationError from "../../../compartido/aplicacion/excepciones/ApplicationError.js";
 import SqlServerCriteriaParser from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
 import Cobertura from "../../dominio/Cobertura.js";
 
@@ -23,9 +24,10 @@ export default class SqlServerCoberturaRepositorio {
       let request = new Request(consulta, (err, rowCount) => {
         if (err) {
           console.log("Error CoberturaRepositorio: " + err);
-          reject(new Error("Error base de datos"));
+          reject(new ApplicationError(500, "Error base de datos"));
         } else {
           console.log(rowCount + " rows");
+          resolve(coberturas);
         }
       });
 
@@ -45,11 +47,7 @@ export default class SqlServerCoberturaRepositorio {
         coberturas.push(cobertura);
       });
 
-      request.on("error", (error) => reject(error));
-      request.on("doneInProc", (rowCount, more, rows) => {
-        resolve(coberturas);
-      });
-
+      
       this.conexion.execSql(request);
     });
 }

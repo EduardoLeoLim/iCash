@@ -1,5 +1,6 @@
 import { TYPES } from "tedious";
-import { SqlServerCriteriaParser } from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
+import { Request } from "tedious";
+import SqlServerCriteriaParser from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
 import Vehiculo from "../../dominio/Vehiculo.js";
 
 export default class SqlServerVehiculoRepositorio {

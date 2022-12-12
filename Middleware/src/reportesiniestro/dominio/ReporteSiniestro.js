@@ -9,7 +9,8 @@ export default class ReporteSiniestro {
     longitud,
     idEmpleado,
     idDictamen,
-    nombreConductor,
+    idPoliza,
+    nombreConductor, 
     apellidoPaterno,
     apellidoMaterno,
     idConductor,
@@ -24,6 +25,7 @@ export default class ReporteSiniestro {
     this.longitud = longitud;
     this.idEmpleado = idEmpleado;
     this.idDictamen = idDictamen;
+    this.idPoliza = idPoliza;
     this.conductor = {
       id: idConductor,
       nombre: nombreConductor + " " + apellidoPaterno + " " + apellidoMaterno,

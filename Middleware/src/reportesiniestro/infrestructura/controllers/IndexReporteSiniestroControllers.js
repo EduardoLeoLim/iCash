@@ -25,7 +25,7 @@ export default class IndexReporteSiniestroControllers {
 
     this.routers.get(
       "/reportesSiniestro/:idReporte",
-      validarToken,
+      //validarToken,
       [param("idReporte").isInt(), validarCampos],
       consultarDetallesDeReporteController
     )

@@ -49,6 +49,7 @@ export default class SqlServerReporteSiniestroRepositorio {
         let hora = columnas.horaAccidente.value;
         let idEmpleado = columnas.idEmpleado.value;
         let idDictamen = columnas.idDictamen.value;
+        let idPoliza = columnas.idPoliza.value;
         let conductor = columnas.nombreConductor.value;
         let idMunicipio = columnas.idMunicipio.value;
         let apellidoPaterno = columnas.apellidoPaterno.value;
@@ -66,6 +67,7 @@ export default class SqlServerReporteSiniestroRepositorio {
           longitud,
           idEmpleado,
           idDictamen,
+          idPoliza,
           conductor,
           apellidoPaterno,
           apellidoMaterno,

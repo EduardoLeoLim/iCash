@@ -13,12 +13,15 @@ export default class ConsultarReporteSiniestroPorId {
       this._repositorio
         .buscar(criteria)
         .then((reportes) => {
-          if (reportes.length > 0) {
-            resolve(reportes[0]);
-          } else {
+          
+          if (reportes.length == 0) {
             reject(
               new ResourceNotFoundError("Reporte de siniestro no encontrado")
             );
+          } else {
+            
+            resolve(reportes[0]);
+            
           }
         })
         .catch((error) => reject(error));

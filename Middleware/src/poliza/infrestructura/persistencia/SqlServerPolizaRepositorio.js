@@ -1,6 +1,8 @@
+import { Request, TYPES } from "tedious";
+import SqlServerCriteriaParser from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
+import Poliza from './../../dominio/Poliza.js';
+import ApplicationError from './../../../compartido/aplicacion/excepciones/ApplicationError.js';
 
-import Poliza from './../../dominio/Poliza';
-import ApplicationError from './../../../compartido/aplicacion/excepciones/ApplicationError';
 export default class SqlServerPolizaRepositorio {
     constructor(conexion){
         this.conexion = conexion;
