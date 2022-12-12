@@ -15,6 +15,7 @@ import ConsultarInvolucradosPorIdReporte from './../../../involucrado/aplicacion
 import ConsultarVehiculoPorId from './../../../vehiculo/aplicacion/ConsultarVehiculoPorId.js';
 import ConsultarPolizaPorId from './../../../poliza/aplicacion/ConsultarPolizaPorId.js';
 
+
 export default function consultarDetallesDeReporteController( req, res) {
     const idReporte = req.params.idReporte;
     let conexion = new Connection(Config);
@@ -122,22 +123,38 @@ export default function consultarDetallesDeReporteController( req, res) {
                 return detallesReporte;
             })
         }).then((detallesReporte) => {
+            let promesas = [];
             detallesReporte.involucrados.forEach((involucrado) => {
-                consultarVehiculoPorId.ejecutar(involucrado.vehiculo)
-                .then((vehiculo) => {
-                    const vehiculoDatos = {
-                        id: vehiculo.id,
-                        marca: vehiculo.marca,
-                        modelo: vehiculo.modelo,
-                        anio: vehiculo.anio,
-                        placas: vehiculo.placas
+                if(involucrado.vehiculo && involucrado.vehiculo != null){
+                    promesas.push(consultarVehiculoPorId.ejecutar(involucrado.vehiculo));
+                }
+                
+            });
+            return Promise.all(promesas)
+            .then((vehiculos) => {
+                detallesReporte.involucrados.forEach((involucrado) => {
+                    console.log(vehiculos);
+                    if(involucrado.vehiculo && involucrado.vehiculo != null){
+                        involucrado.vehiculo = vehiculos.find((vehiculoLoop) => {
+                            return vehiculoLoop.id == involucrado.vehiculo;
+                        });
                     }
-                    involucrado.vehiculo = vehiculoDatos;
                     
-                })  
+                });
+                return detallesReporte;
+                    // const vehiculoDatos = {
+                    //     id: vehiculo.id,
+                    //     marca: vehiculo.marca,
+                    //     modelo: vehiculo.modelo,
+                    //     anio: vehiculo.anio,
+                    //     placas: vehiculo.placas
+                    // }
+                    // involucrado.vehiculo = vehiculoDatos;
             })
-            //return vehiculos;
+        }).then((detallesReporte) => {
             res.status(200).json(detallesReporte);
-        })
+        }).catch((error) => {
+            res.status(500).json({error: error.message});})
+            .finally(() => {conexion.close();});
 });
 }
