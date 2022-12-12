@@ -48,6 +48,7 @@ export default class Auntenticacion {
         .equal("claveAcceso", contrasena)
         .obligatory()
         .equal("role", Rol.Ajustador)
+        .obligatory()
         .build();
 
       this._repositorio

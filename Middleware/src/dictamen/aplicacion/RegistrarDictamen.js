@@ -7,11 +7,7 @@ export default class RegistrarDictamen {
 
   run = (fecha, descripcion, idReporteSiniestro) =>
     new Promise((resolve, reject) => {
-      let dictamen = new Dictamen(
-        fecha,
-        descripcion,
-        idReporteSiniestro
-      );
+      let dictamen = new Dictamen(fecha, descripcion, idReporteSiniestro);
 
       this._repositorio
         .registrar(dictamen)

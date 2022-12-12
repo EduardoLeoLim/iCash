@@ -1,10 +1,10 @@
 import { Connection } from "tedious";
 import { Config } from "../../../compartido/infrestructura/conexiones/Conexion.js";
 import { generarToken } from "../../../compartido/infrestructura/utils/Token.js";
-import { Auntenticacion } from "../../aplicacion/Auntenticacion.js";
-import { SqlServerUsuarioRepositorio } from "../persistencia/SqlServerUsuarioRepositorio.js";
+import Auntenticacion from "../../aplicacion/Auntenticacion.js";
+import SqlServerUsuarioRepositorio from "../persistencia/SqlServerUsuarioRepositorio.js";
 
-export function auntenticacionAjustadorController(req, res) {
+export default function auntenticacionAjustadorController(req, res) {
   const nombreUsuario = req.body.nombreUsuario;
   const claveAcceso = req.body.claveAcceso;
 
@@ -24,11 +24,12 @@ export function auntenticacionAjustadorController(req, res) {
       .auntenticacionAjustador(nombreUsuario, claveAcceso)
       .then((usuario) => {
         const token = generarToken(usuario);
-        res.setHeader("authorization", token);
+        res.header("Access-Control-Expose-Headers", "Authorization");
+        res.header("Authorization", [token]);
         res.status(200).json(usuario);
       })
       .catch((error) => {
-        res.status(error.status).json(error);
+        res.status(401).json(error);
         //Checar el numero de status del error y mensaje a poner
       })
       .finally(() => {

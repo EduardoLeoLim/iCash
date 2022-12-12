@@ -30,7 +30,7 @@ function comprobarCredenciales(usuario, contrasenia) {
           });
     })
 }
-
+ 
 
 function agregarValoresStorage(response){
     sessionStorage.setItem("token", response.headers.authorization)
