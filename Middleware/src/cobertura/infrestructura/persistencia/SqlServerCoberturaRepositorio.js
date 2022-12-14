@@ -47,7 +47,6 @@ export default class SqlServerCoberturaRepositorio {
         coberturas.push(cobertura);
       });
 
-      
       this.conexion.execSql(request);
     });
 }

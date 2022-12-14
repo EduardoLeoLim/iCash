@@ -2,7 +2,6 @@ import { Request, TYPES } from "tedious";
 import SqlServerCriteriaParser from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
 import Plazo from "../../dominio/Plazo.js";
 
-
 export default class SqlServerPlazoRepositorio {
   constructor(conexion) {
     this.conexion = conexion;

@@ -10,7 +10,7 @@ export default class ReporteSiniestro {
     idEmpleado,
     idDictamen,
     idPoliza,
-    nombreConductor, 
+    nombreConductor,
     apellidoPaterno,
     apellidoMaterno,
     idConductor,

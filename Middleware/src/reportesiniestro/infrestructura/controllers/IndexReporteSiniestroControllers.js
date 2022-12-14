@@ -28,6 +28,6 @@ export default class IndexReporteSiniestroControllers {
       //validarToken,
       [param("idReporte").isInt(), validarCampos],
       consultarDetallesDeReporteController
-    )
+    );
   }
 }
