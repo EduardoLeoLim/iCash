@@ -4,6 +4,12 @@ import SqlServerUsuarioRepositorio from "../src/usuario/infrestructura/persisten
 import { Connection } from "tedious";
 import { Config } from "../src/compartido/infrestructura/conexiones/Conexion.js";
 import ConsultarUsuarioPorId from "../src/usuario/aplicacion/ConsultarUsuarioPorId.js";
+import Auntenticacion from '../src/usuario/aplicacion/Auntenticacion.js';
+import { generarToken } from "../src/compartido/infrestructura/utils/Token.js";
+import { resolve } from 'path';
+import dotenv from "dotenv";
+
+dotenv.config();
 
 // TESTS
 describe("Usuarios", function () {
@@ -36,14 +42,25 @@ describe("Usuarios", function () {
 
   });
 
-  describe('Autenticación', function () {
-    it('Iniciar sesion de conductor', function () {
-      assert.equal(-1, [1,2,3].indexOf(5));
+  describe('#Autenticación', function () {
+    it('Inicio de sesion con usuario 2282144903 y contrasena 123', function () {
+      return new Promise((resolve, reject) => {
+        auntenticacionConductor("2282144903", "123")
+        .then((response) => {
+          assert.equal(response.nombreUsuario, "2282144903");
+          assert.equal(response.claveAcceso, "123")
+          resolve()
+        })
+        .catch(error => {
+          reject(error)
+        })
+      })
     });
   })
 
 });
 
+//FUNCIONES
 function consultarUsuarios() {
   return new Promise((resolve, reject) => {
     let conexion = new Connection(Config);
@@ -93,6 +110,34 @@ function consultarUsuarioPorId(idUsuario) {
         }).finally(() => {
           conexion.close()
       })
+    });
+  })
+}
+
+function auntenticacionConductor(usuario, contrasena){
+  return new Promise((resolve, reject) => {
+    let conexion = new Connection(Config);
+
+    conexion.connect((error) => {
+      if (error) {
+        assert.ok(false, "Error de conexión")
+        resolve()
+      }
+
+      let usuariosRepositorio = new SqlServerUsuarioRepositorio(conexion);
+      let auntenticacion = new Auntenticacion(usuariosRepositorio);
+
+      auntenticacion
+      .auntenticacionConductor(usuario, contrasena)
+      .then((usuario) => {
+        resolve(usuario)
+      })
+      .catch((error) => {
+        reject(error)
+      })
+      .finally(() => {
+        conexion.close();
+      });
     });
   })
 }

@@ -30,7 +30,6 @@ export default function auntenticacionConductorController(req, res) {
       })
       .catch((error) => {
         res.status(401).json(error);
-        //Checar el numero de status del error y mensaje a poner
       })
       .finally(() => {
         conexion.close();
