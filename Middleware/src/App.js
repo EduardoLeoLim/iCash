@@ -11,6 +11,7 @@ import IndexMuncipioControllers from "./municipio/infrestructura/controllers/Ind
 import IndexUsuarioControllers from "./usuario/infrestructura/controllers/IndexUsuarioControllers.js";
 import IndexReporteSiniestroControllers from "./reportesiniestro/infrestructura/controllers/IndexReporteSiniestroControllers.js";
 import IndexDictamenControllers from "./dictamen/infrestructura/controllers/IndexDictamenControllers.js";
+import IndexImagenControllers from "./imagen/infrestructura/controllers/IndexImagenControllers.js";
 
 export class App {
   constructor() {
@@ -60,6 +61,9 @@ export class App {
     //Empleado
 
     //Imagen
+    let imagenControllers = new IndexImagenControllers();
+    imagenControllers.loadControllers();
+    this.app.use(imagenControllers.routers);
 
     //Involucrado
 
