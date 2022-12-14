@@ -56,31 +56,27 @@ export default class SqlServerDictamenRepositorio {
     new Promise((resolve, reject) => {
       let idDictamen;
       let consulta =
-        "INSERT INTO Dictamen (folio, fecha, descripcion, idReporteSinestro) " +
-        "VALUES (@value1, @value2, @value3, @value4); " +
-        "SELECT scope_identity();";
+        "INSERT INTO Dictamen (fecha, descripcion) " +
+        "VALUES (@value1, @value2); " +
+        "SELECT scope_identity() as id;";
 
       let request = new Request(consulta, (err) => {
         if (err) {
-          console.log("Error VehiculoRepositorio: " + err);
+          console.log("Error dictamen: " + err);
           reject(new Error("Error base de datos"));
+        }else{
+          resolve(idDictamen)
         }
       });
-
-      request.addParameter("value1", TYPES.VarChar, dictamen.folio);
-      request.addParameter("value2", TYPES.DateTime, dictamen.fecha);
-      request.addParameter("value3", TYPES.VarChar, dictamen.descripcion);
-      request.addParameter("value4", TYPES.Int, dictamen.idReporteSiniestro);
+      TYPES.VarChar,dictamen.descripcion
+      request.addParameter("value1", TYPES.DateTime, dictamen.fecha);
+      request.addParameter("value2", TYPES.VarChar,dictamen.descripcion);
 
       request.on("row", (columns) => {
-        idDictamen = columns[0].value;
+        idDictamen = columns.id.value;
         console.log("Usuario registrado con id: %d", idDictamen);
       });
 
-      request.on("error", (error) => reject(error));
-      request.on("doneInProc", () => {
-        resolve(idDictamen);
-      });
 
       this.conexion.execSql(request);
     });

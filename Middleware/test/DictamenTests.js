@@ -13,7 +13,8 @@ describe("Dictamenes", function() {
     describe('#Registrar dictamen', function (){
         it('Debe un 201, ya que el reporte no se encuentra dictaminado ', function() {
             return new Promise((resolve,reject) => {
-                registrarDictamenReporteController("Se realizo el dictamen correspondiente", "2022-12-14", 2)
+              var date = Date.now()
+                registrarDictamenReporteController("Se realizo el dictamen correspondiente", date, 2)
                   .then((dictamenStatus) => {
                     assert.equal(dictamenStatus, 201)
                     resolve()
@@ -26,13 +27,14 @@ describe("Dictamenes", function() {
 
         it('Debe un 400, ya que el reporte ya se encuentra dictaminado ', function() {
           return new Promise((resolve,reject) => {
-              registrarDictamenReporteController("Se realizo el dictamen correspondiente", "2022-12-14", 2)
+            var date = Date.now()
+              registrarDictamenReporteController("Se realizo el dictamen correspondiente", date, 2)
                 .then((dictamenStatus) => {
                   assert.equal(dictamenStatus, 400)
-                  resolve()
+                  reject()
                 })
                 .catch(error => {
-                  reject(error)
+                  resolve(error)
                 })
           })
       });

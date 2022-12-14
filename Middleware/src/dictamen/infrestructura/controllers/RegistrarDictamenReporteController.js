@@ -9,7 +9,7 @@ import ApplicationError from "../../../compartido/aplicacion/excepciones/Applica
 
 export default function registrarDictamenReporteController(req, res) {
   const descripcion = req.body.descripcion;
-  const fecha = req.body.fecha;
+  const fecha = new Date(req.body.fecha);
   const idReporteSiniestro = req.params.idReporteSiniestro;
 
   let conexion = new Connection(Config);
@@ -64,17 +64,18 @@ export default function registrarDictamenReporteController(req, res) {
         })
         .then(() => {
           conexion.commitTransaction((error) => {
-            if (error)
+            if (error){
+              console.log(error)
               throw new ApplicationError(500, "Error al registrar el dictamen");
+            }
+            conexion.close();
             res.status(201).json("Dictamen registrado");
+
           });
         })
         .catch((error) => {
-          res.status(error.status).json(error);
+          res.status(500).json(error);
         })
-        .finally(() => {
-          conexion.close();
-        });
     });
   });
 }
