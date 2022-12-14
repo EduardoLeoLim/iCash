@@ -58,6 +58,21 @@ describe("Usuarios", function () {
     });
   })
 
+  describe('#Autenticación', function () {
+    it('Inicio de sesion con usuario 2282144903 y contrasena 123', function () {
+      return new Promise((resolve, reject) => {
+        auntenticacionAjustador("2282144903", "123")
+        .then((response) => {
+          assert.equal(response.nombreUsuario, "2282144903");
+          assert.equal(response.claveAcceso, "123")
+          resolve()
+        })
+        .catch(error => {
+          reject(error)
+        })
+      })
+    });
+  })
 });
 
 //FUNCIONES
@@ -142,3 +157,30 @@ function auntenticacionConductor(usuario, contrasena){
   })
 }
 
+function auntenticacionAjustador(usuario, contrasena){
+  return new Promise((resolve, reject) => {
+    let conexion = new Connection(Config);
+
+    conexion.connect((error) => {
+      if (error) {
+        assert.ok(false, "Error de conexión")
+        resolve()
+      }
+
+      let usuariosRepositorio = new SqlServerUsuarioRepositorio(conexion);
+      let auntenticacion = new Auntenticacion(usuariosRepositorio);
+
+      auntenticacion
+      .auntenticacionConductor(usuario, contrasena)
+      .then((usuario) => {
+        resolve(usuario)
+      })
+      .catch((error) => {
+        reject(error)
+      })
+      .finally(() => {
+        conexion.close();
+      });
+    });
+  })
+}
