@@ -12,7 +12,7 @@ export default function auntenticacionConductorController(req, res) {
 
   conexion.connect((err) => {
     if (err) {
-      console.log("Error: ", err); 
+      console.log("Error: ", err);
       res.status(500).json();
       return;
     }

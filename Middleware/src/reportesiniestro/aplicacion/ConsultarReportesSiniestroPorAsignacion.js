@@ -5,10 +5,10 @@ export default class ConsultarReportesSiniestroPorAsignacion {
     this._repositorio = repositorio;
   }
 
-  run = (idEmpleado) => 
+  run = (idEmpleado) =>
     new Promise((resolve, reject) => {
       let criteria = new CriteriaBuilder()
-        .equal("idEmpleado", idEmpleado) 
+        .equal("idEmpleado", idEmpleado)
         .obligatory()
         .build();
 

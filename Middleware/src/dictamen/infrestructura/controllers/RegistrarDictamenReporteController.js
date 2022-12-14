@@ -31,9 +31,10 @@ export default function registrarDictamenReporteController(req, res) {
       reporteSiniestroRepositorio
     );
 
-    let actualizarReporteComoDictaminado = new ActualizarReporteSiniestroComoDictaminado(
-      reporteSiniestroRepositorio
-    );
+    let actualizarReporteComoDictaminado =
+      new ActualizarReporteSiniestroComoDictaminado(
+        reporteSiniestroRepositorio
+      );
 
     let registrarDictamen = new RegistrarDictamen(reporteDictamenRepositorio);
 

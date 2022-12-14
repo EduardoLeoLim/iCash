@@ -1,14 +1,14 @@
 import { Request, TYPES } from "tedious";
 import SqlServerCriteriaParser from "../../../compartido/infrestructura/utils/SqlServerCriteriaParser.js";
-import Poliza from './../../dominio/Poliza.js';
-import ApplicationError from './../../../compartido/aplicacion/excepciones/ApplicationError.js';
+import Poliza from "./../../dominio/Poliza.js";
+import ApplicationError from "./../../../compartido/aplicacion/excepciones/ApplicationError.js";
 
 export default class SqlServerPolizaRepositorio {
-    constructor(conexion){
-        this.conexion = conexion;
-    }
+  constructor(conexion) {
+    this.conexion = conexion;
+  }
 
-    buscar = (criteria) =>
+  buscar = (criteria) =>
     new Promise((resolve, reject) => {
       let polizas = [];
 
@@ -43,8 +43,15 @@ export default class SqlServerPolizaRepositorio {
         let precioFinal = columnas.precioFinal.value;
         let idConductor = columnas.idConductor.value;
 
-        let poliza = new Poliza(nombre, precioFinal, idConductor, idPlazo, idCobertura, id);
-        
+        let poliza = new Poliza(
+          nombre,
+          precioFinal,
+          idConductor,
+          idPlazo,
+          idCobertura,
+          id
+        );
+
         polizas.push(poliza);
       });
 

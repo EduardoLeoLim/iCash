@@ -5,10 +5,10 @@ export default class VerDetallesReporteSiniestro {
     this._repositorio = repositorio;
   }
 
-  run = (idEmpleado) => 
+  run = (idEmpleado) =>
     new Promise((resolve, reject) => {
       let criteria = new CriteriaBuilder()
-        .equal("idReporte", idReporte) 
+        .equal("idReporte", idReporte)
         .obligatory()
         .build();
 
