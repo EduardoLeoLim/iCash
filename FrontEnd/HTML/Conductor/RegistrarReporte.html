@@ -37,26 +37,27 @@
                 <div>
                     <h4>Ubicación</h4>
                     <label for="latitud">Latitud</label>
-                    <input id="latitudText" type="text">
+                    <input readonly id="latitudText" type="text">
 
                     <label for="longitud">Longitud</label>
-                    <input id="longitudText" type="text">
+                    <input readonly id="longitudText" type="text">
 
                     <button id="btnCalcularUbicacion">Calcular ubicación</button>
 
 
                     <br>
-                    <label for="latitud">Entidad Federativa</label>
+                    <label for="cbEntidadFederativa">Entidad Federativa</label>
                     <select id="cbEntidadFederativa"></select>
                     <br>
-                    <label for="latitud">Municipio</label>
+                    <label for="cbMunicipio">Municipio</label>
                     <select id="cbMunicipio"></select>
                 </div>
 
                 <div>
                     <h4>Imágenes</h4>
                     <label for="imagenes"></label>
-                    <input accept=".jpg,.png" id="imagenes" type="file" multiple>
+                    <input accept=".jpg,.png" id="imagenesIn" type="file" multiple >
+                    <p id="error">Please carga almenos 4 imagenes</p>
                 </div>
                 <div>
                     <h4>Fecha Hora</h4>
@@ -81,10 +82,7 @@
 
                     <div>
                         <label for="marcaInvolucrado col-md-6">Marca</label>
-                        <select id="cbMarcaInvolucrado">
-                            <option value="0" >Ford</option>
-                            <option value="1" >Fiat</option>   
-                            <option value="2">Honda</option>   
+                        <select id="cbMarcaInvolucrado"> 
                         </select>
                     </div>
 
@@ -92,7 +90,6 @@
                         <label for="modeloInvolucrado">Modelo</label>
                         <input maxlength="50" type="text" id="modeloInvolucrado">
                     </div>
-
                     <div>
                         <label for="colorInvolucrado">Color</label>
                         <input maxlength="50" type="text" id="colorInvolucrado">
@@ -106,11 +103,11 @@
                         <label for="numSerieInvolucrado">Número de serie</label>
                         <input maxlength="20" type="text" id="numSerieInvolucrado">
                     </div>
-
-
+                    <div>
+                        <label for="añoInvolucrado">Año del auto</label>
+                        <input maxlength="20" type="text" id="añoInvolucrado">
+                    </div>
                     <button id="btnAgregarInvolucrado">Agregar</button>
-
-
                     <table id="tableInvolucrado" border="1">
                         <thead>
                             <tr>
@@ -120,13 +117,13 @@
                                 <th>Color</th>
                                 <th>NumPlacas</th>
                                 <th>NumSerie</th>
+                                <th>Año</th>
                             </tr>
                         </thead>
                     </table>
-
                     <button id="btnRemoverInvolucrados">Remover todos los involucrado</button>
                 </div>
-                <input type="submit" value="Registrar">
+                <input id="btnRegistrar" type="submit" value="Registrar">
             </form>
         </div>
     </main>
