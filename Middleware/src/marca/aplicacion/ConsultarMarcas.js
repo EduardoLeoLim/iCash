@@ -10,7 +10,7 @@ export default class ConsultarMarcas {
       let criteria = new CriteriaBuilder()
         .orderAsc("id")
         .limit(limit)
-        .offset(offset) 
+        .offset(offset)
         .build();
 
       this._repositorio
