@@ -13,6 +13,7 @@ import IndexReporteSiniestroControllers from "./reportesiniestro/infrestructura/
 import IndexDictamenControllers from "./dictamen/infrestructura/controllers/IndexDictamenControllers.js";
 import IndexImagenControllers from "./imagen/infrestructura/controllers/IndexImagenControllers.js";
 import IndexMarcaControllers from "./marca/infrestructura/controllers/IndexMarcaController.js";
+import IndexPolizaControllers from "./poliza/infrestructura/controllers/IndexPolizaControllers.js";
 
 export class App {
   constructor() {
@@ -76,6 +77,9 @@ export class App {
     //Plazo
 
     //Poliza
+    let polizaControllers = new IndexPolizaControllers();
+    polizaControllers.loadControllers();
+    this.app.use(polizaControllers.routers);
 
     //Reporte Siniestro
     let reporteSiniestroController = new IndexReporteSiniestroControllers();
