@@ -17,7 +17,7 @@ export default class IndexReporteSiniestroControllers {
       registrarReporteSiniestroController
     );
 
-    this.routers.get(
+    this.routers.get( 
       "/ajustadores/:idEmpleado/reportesSiniestro",
       [param("idEmpleado").isInt(), validarCampos],
       consultarReportesSiniestroAjustador

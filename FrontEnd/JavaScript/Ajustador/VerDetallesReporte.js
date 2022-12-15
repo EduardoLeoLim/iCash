@@ -5,7 +5,6 @@ function mostrarDatosReporte() {
     return new Promise(function(res, rej){
         axios.get(URL_BASE+'/reportesSiniestro/'+idReporte)
           .then(function (response) {
-            console.log(response.data)
             agregarValoresStorage(response.data)
             res()
           })
@@ -73,7 +72,7 @@ function agregarValoresStorage(data) {
             fotos.forEach(foto => { 
               
               contenidoFotos += `<img crossorigin="anonymous" src='${URL_BASE + "/reportesSiniestro/imagenes/" + foto}' width='300' height='300'>`
-              console.log(foto)
+              
             })
             document.getElementById("fotos").innerHTML = contenidoFotos;
 

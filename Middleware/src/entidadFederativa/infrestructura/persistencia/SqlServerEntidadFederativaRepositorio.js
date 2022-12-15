@@ -6,7 +6,7 @@ export default class SqlServerEntidadFederativaRepositorio {
   constructor(conexion) {
     this.conexion = conexion;
   }
-
+ 
   buscar = (criteria) =>
     new Promise((resolve, reject) => {
       let entidadesFederativas = [];

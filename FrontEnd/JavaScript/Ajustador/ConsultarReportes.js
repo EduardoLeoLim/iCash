@@ -2,7 +2,7 @@ let ID_REPORTE = 0;
 
 function mostrarDatosReporte() {
     const idReporte = sessionStorage.getItem("idReporte");
-    alert(idReporte)
+    
     const idEmpleado = sessionStorage.getItem("idEmpleado");
     return new Promise(function(res, rej){
         axios.get(URL_BASE+'/ajustadores/'+idEmpleado+'/reportesSiniestro')

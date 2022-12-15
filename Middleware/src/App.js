@@ -12,7 +12,7 @@ import IndexUsuarioControllers from "./usuario/infrestructura/controllers/IndexU
 import IndexReporteSiniestroControllers from "./reportesiniestro/infrestructura/controllers/IndexReporteSiniestroControllers.js";
 import IndexDictamenControllers from "./dictamen/infrestructura/controllers/IndexDictamenControllers.js";
 import IndexImagenControllers from "./imagen/infrestructura/controllers/IndexImagenControllers.js";
-
+ 
 export class App {
   constructor() {
     this.app = express();
@@ -66,6 +66,11 @@ export class App {
     this.app.use(imagenControllers.routers);
 
     //Involucrado
+
+    //Marca
+    let marcaControllers = new IndexMarcaControllers();
+    marcaControllers.loadControllers();
+    this.app.use(marcaControllers.routers);
 
     //Plazo
 

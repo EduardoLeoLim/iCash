@@ -40,7 +40,6 @@ function agregarValoresStorage(response){
     sessionStorage.setItem("contrasena", response.data.claveAcceso)
     sessionStorage.setItem("idUsuario", response.data.id)
     sessionStorage.setItem("idEmpleado", response.data.idEmpleado)
-    alert("paso")
 }
 
 window.onload = function(){
