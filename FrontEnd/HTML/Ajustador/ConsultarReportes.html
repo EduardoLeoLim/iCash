@@ -12,25 +12,28 @@
 </head>
 
 <body>
-    <header style="text-align: center;">
+    <!-- <header style="text-align: center;">
         <h1>Titulo </h1>
-    </header>
+    </header> -->
     <main>
-        <div style="text-align: center;">
-            <input type="text" id="filtro" onkeyup="filtrar()" placeholder="Buscar reporte..." />
-            <table id="reportes" border="1">
-                <caption>Reportes asignados</caption>
-                <tr>
-                    <th>Id reporte</th>
-                    <th>Nombre de reporte</th>
-                    <th>Estatus</th>
-                    <th>Fecha de registro</th>
-                    <th>Conductor</th>
-                </tr>
-            </table>
-            <button id="verDetalles" style="width:80px;height:100px;">
-                Ver datalles reporte
-            </button>
+        <div>
+            <div class="container-table">
+                <input type="text" id="filtro" onkeyup="filtrar()" placeholder="Buscar reporte..." class="buscar" />
+                <table id="reportes" border="1">
+                    <h3>Reportes</h3>
+                    <tr>
+                        <th>Id reporte</th>
+                        <th>Nombre de reporte</th>
+                        <th>Estatus</th>
+                        <th>Fecha de registro</th>
+                        <th>Conductor</th>
+                    </tr>
+                </table>
+                <button id="verDetalles">
+                    Ver detalles reporte
+                </button>
+            </div>
+
         </div>
 
     </main>

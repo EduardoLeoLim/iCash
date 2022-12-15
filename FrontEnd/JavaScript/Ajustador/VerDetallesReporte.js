@@ -70,11 +70,9 @@ function agregarValoresStorage(data) {
             
             let contenidoFotos = "";
             fotos.forEach(foto => { 
-              
               contenidoFotos += `<img crossorigin="anonymous" src='${URL_BASE + "/reportesSiniestro/imagenes/" + foto}' width='300' height='300'>`
-              
             })
-            document.getElementById("fotos").innerHTML = contenidoFotos;
+            document.getElementById("fotosReporte").innerHTML = contenidoFotos;
 
             let tabla = document.getElementById('involucrados');
             let template = `

@@ -8,51 +8,59 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="text/javascript" src="../../JavaScript/comprobarSessionStorage.js"></script>
     <script type="text/javascript" src="../../JavaScript/Ajustador/VerDetallesReporte.js"></script>
-    <!-- <script type="" src=".js"></script>
-    <link rel="stylesheet" href=".css"> -->
+    <link rel="stylesheet" href="/FrontEnd/CSS/Ajustador/VerDetallesReporte.css">
 </head>
 
 <body>
-    <header style="text-align: center;">
-        <h1>Titulo</h1>
-    </header>
-    <main>
+    <div class="titulo">
+        <h1>Datos del reporte</h1>
+    </div>
+
+    <div class="container">
         <h2>Poliza</h2>
-        <label id="idPoliza">Id:</label>
+        <label>No. Poliza: </label>
+        <label id="idPoliza"></label>
+        <br>
         <br>
         <h2>Cobertura</h2>
-        <label id="nombreCobertura">Nombre:</label>
+        <label>Nombre: </label>
+        <label id="nombreCobertura"></label>
         <br>
+        <label>Tipo: </label>
+        <label id="tipo"></label>
         <br>
-        <label id="tipo">Tipo:</label>
         <br>
         <h2>Plazo</h2>
-        <label id="nombrePlazo">Nombre:</label>
+        <label>Nombre: </label>
+        <label id="nombrePlazo"></label>
+        <br>
         <br>
         <h2>Precio final</h2>
-        <label id="precioFinal">Precio: $</label>
+        <label>Precio: $</label>
+        <label id="precioFinal"></label>
+        <br>
         <br>
         <h2>Reporte</h2>
-        <label id="idReporte">Id:</label>
+        <label>No. Reporte: </label>
+        <label id="idReporte"></label>
         <br>
+        <label>Nombre: </label>
+        <label id="nombreReporte"></label>
         <br>
-        <label id="nombreReporte">Nombre:</label>
+        <label>Estatus: </label>
+        <label id="estatus"></label>
         <br>
+        <label>Fecha de registro: </label>
+        <label id="fechaRegistro"></label>
         <br>
-        <label id="estatus">Estatus:</label>
+        <label>Fecha de accidente: </label>
+        <label id="horaAccidente"></label>
         <br>
+        <label>Latitud: </label>
+        <label id="latitud"></label>
         <br>
-        <label id="fechaRegistro">Fecha de registro:</label>
-        <br>
-        <br>
-        <label id="horaAccidente">Hora de accidente:</label>
-        <br>
-        <br>
-        <label id="latitud">Latitud:</label>
-        <br>
-        <br>
-        <label id="longitud">Longitud:</label>
-        <br>
+        <label>Longitud: </label>
+        <label id="longitud"></label>
         <br>
         <label>Fotos:</label>
         <div id="fotosReporte"></div>
@@ -73,10 +81,11 @@
                 <th>Id Poliza</th>
             </tr>
         </table>
-        <button id="dictaminar" style="width:80px;height:100px;">
+        <button id="dictaminar">
             Dictaminar
         </button>
-    </main>
+    </div>
+
 </body>
 
 </html>
