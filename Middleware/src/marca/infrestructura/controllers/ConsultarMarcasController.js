@@ -1,7 +1,7 @@
 import { Connection } from "tedious";
 import { Config } from "../../../compartido/infrestructura/conexiones/Conexion.js";
-
-import SqlServerEntidadFederativaRepositorio from "../persistencia/SqlServerEntidadFederativaRepositorio.js";
+import SqlServerMarcaRepositorio from "../persistencia/SqlServerMarcaRepositorio.js";
+import ConsultarMarcas from "../../aplicacion/ConsultarMarcas.js";
 
 export default function consultarMarcasController(req, res) {
   let limit = req.query.limit;
@@ -14,7 +14,7 @@ export default function consultarMarcasController(req, res) {
       console.log("Error: ", err);
       res.status(500).json();
       return;
-    } 
+    }
 
     let marcasRepositorio = new SqlServerMarcaRepositorio(conexion);
     let consultarMarcas = new ConsultarMarcas(marcasRepositorio);
