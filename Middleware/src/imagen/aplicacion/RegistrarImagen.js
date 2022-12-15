@@ -7,7 +7,6 @@ export default class RegistrarImagen {
 
   ejecutar = (idReporteSiniestro, nombreImangen) =>
     new Promise((resolve, reject) => {
-      console.log("RegistrarImagen.ejecutar");
       let imagen = new Imagen(idReporteSiniestro, nombreImangen);
       this.repositorio
         .registrar(imagen)

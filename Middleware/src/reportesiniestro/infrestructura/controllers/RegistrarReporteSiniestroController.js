@@ -27,9 +27,6 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default function registrarReporteSiniestroController(req, res) {
 
-  console.log("entro al controlador");
-
-
   const imagenes = req.files;
   const {
     nombre,
@@ -51,7 +48,6 @@ export default function registrarReporteSiniestroController(req, res) {
       return res.status(500).json();
     }
 
-    console.log("conexion exitosa");
 
     let condutorRepositorio = new SqlServerConductorRepositorio(conexion);
     let polizaRepositorio = new SqlServerPolizaRepositorio(conexion);
@@ -98,8 +94,6 @@ export default function registrarReporteSiniestroController(req, res) {
         return res.status(500).json("Error de base de datos");
       }
 
-      console.log("Inicia transaccion");
-
       consultarPoliza
         .ejecutar(idPoliza)
         .then((poliza) => {
@@ -138,15 +132,6 @@ export default function registrarReporteSiniestroController(req, res) {
             })
           }
           return idReporteSiniestro;
-          // let promesas = [];
-          // for (let i = 0; i < imagenes.length; i++) {
-          //   let promesa = registrarImagen.ejecutar(idReporteSiniestro, idReporteSiniestro + "-" + (i + 1) + imagenes[0].name.split(".").pop() )
-          //   promesas.push(promesa);
-          // }
-          // return Promise.all(promesas).then((urlImagenes) => {
-          //   console.log(urlImagenes);
-          //   return idReporteSiniestro;
-          // });
         })
         .then((idReporteSiniestro) => {
           let imagen = imagenes[1];
@@ -295,11 +280,6 @@ export default function registrarReporteSiniestroController(req, res) {
             });
           })()
 
-          // (async () => {
-          //   for (let promesa of promesas) {
-          //     await promesa();
-          //   }
-          // })();
         })
         .catch((err) => {
           console.log(err);
