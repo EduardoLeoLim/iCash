@@ -34,19 +34,6 @@ describe("Reportes siniestros", function() {
                   })
             })
         });
-
-        it('Debe retornar un 200, ya que sí hay un reporte de siniestro', function() {
-          return new Promise((resolve,reject) => {
-            consultarDetallesDeReporteController(2)
-                .then((reportes) => {
-                  assert.equal(reportes, 200)
-                  resolve(reportes)
-                })
-                .catch(error => {
-                  reject(error)
-                })
-          })
-      });
     });
 });
 
