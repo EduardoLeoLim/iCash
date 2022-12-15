@@ -2,7 +2,7 @@ import ResourceNotFoundError from "../../compartido/aplicacion/excepciones/Resou
 import { CriteriaBuilder } from "../../compartido/dominio/criteria/CriteriaBuilder.js";
 
 export default class ConsultarReporteSiniestroPorId {
-  constructor(repositorio) { 
+  constructor(repositorio) {
     this._repositorio = repositorio;
   }
 

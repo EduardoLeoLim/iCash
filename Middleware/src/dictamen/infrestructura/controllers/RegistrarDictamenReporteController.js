@@ -64,18 +64,17 @@ export default function registrarDictamenReporteController(req, res) {
         })
         .then(() => {
           conexion.commitTransaction((error) => {
-            if (error){
-              console.log(error)
+            if (error) {
+              console.log(error);
               throw new ApplicationError(500, "Error al registrar el dictamen");
             }
             conexion.close();
             res.status(201).json("Dictamen registrado");
-
           });
         })
         .catch((error) => {
           res.status(500).json(error);
-        })
+        });
     });
   });
 }
