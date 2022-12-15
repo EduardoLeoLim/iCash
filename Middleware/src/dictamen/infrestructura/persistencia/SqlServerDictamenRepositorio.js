@@ -64,19 +64,18 @@ export default class SqlServerDictamenRepositorio {
         if (err) {
           console.log("Error dictamen: " + err);
           reject(new Error("Error base de datos"));
-        }else{
-          resolve(idDictamen)
+        } else {
+          resolve(idDictamen);
         }
       });
-      TYPES.VarChar,dictamen.descripcion
+      TYPES.VarChar, dictamen.descripcion;
       request.addParameter("value1", TYPES.DateTime, dictamen.fecha);
-      request.addParameter("value2", TYPES.VarChar,dictamen.descripcion);
+      request.addParameter("value2", TYPES.VarChar, dictamen.descripcion);
 
       request.on("row", (columns) => {
         idDictamen = columns.id.value;
         console.log("Usuario registrado con id: %d", idDictamen);
       });
-
 
       this.conexion.execSql(request);
     });

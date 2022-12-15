@@ -6,7 +6,7 @@ export default class ConsultarUsuarioPorId {
     this._repositorio = repositorio;
   }
 
-  buscarUsuario = (idUsuario) => 
+  buscarUsuario = (idUsuario) =>
     new Promise((resolve, reject) => {
       let criteria = new CriteriaBuilder()
         .orderAsc("id")

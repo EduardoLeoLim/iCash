@@ -32,14 +32,13 @@ export default function consultarMunicipiosController(req, res) {
         return entidadFederativa.id;
       })
       .then((idEntidadFederativa) => {
-        return consultarMunicipios
-          .run(idEntidadFederativa)
+        return consultarMunicipios.run(idEntidadFederativa);
       })
       .then((municipios) => {
         res.status(200).json(municipios);
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
         res.status(error.status).json(error);
       })
       .finally(() => {

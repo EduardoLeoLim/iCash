@@ -6,7 +6,7 @@ import consultarEntidadesFederativasController from "./ConsultarEntidadesFederat
 export default class IndexEntidadFederativaControllers {
   constructor() {
     this.routers = Router();
-  } 
+  }
 
   loadControllers() {
     this.routers.get(

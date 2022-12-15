@@ -86,7 +86,7 @@ export default class SqlServerReporteSiniestroRepositorio {
       let consulta =
         "INSERT INTO ReporteSiniestro(nombre, estatus, fechaRegistro, horaAccidente, idMunicipio, latitud, longitud, idPoliza) " +
         "VALUES (@value1, @value2, @value3, @value4, @value5, @value6, @value7, @value8); " +
-        "SELECT scope_indentity()";
+        "SELECT scope_indentity() as id";
 
       let request = new Request(consulta, (error) => {
         if (error) {
@@ -97,6 +97,8 @@ export default class SqlServerReporteSiniestroRepositorio {
               "Error al registrar el reporte de siniestro vehicular."
             )
           );
+        } else {
+          resolve(idReporteSiniestro);
         }
       });
 
@@ -110,8 +112,8 @@ export default class SqlServerReporteSiniestroRepositorio {
       request.addParameter("value8", TYPES.Int, reporteSiniestro.idPoliza);
 
       request.on("row", (columns) => {
-        idReporteSiniestro = columns[0].value;
-        console.log("vehículo registrado con id: %d", idVehiculo);
+        idReporteSiniestro = columns.id.value;
+        console.log("vehículo registrado con id: %d", idReporteSiniestro);
       });
 
       this.conexion.execSql(request);

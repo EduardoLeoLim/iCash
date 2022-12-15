@@ -1,6 +1,6 @@
 import Vehiculo from "../dominio/Vehiculo.js";
 
-export default class RegistrardorVehiculo {
+export default class RegistradorVehiculo {
   constructor(repositorio) {
     this.repositorio = repositorio;
   }
