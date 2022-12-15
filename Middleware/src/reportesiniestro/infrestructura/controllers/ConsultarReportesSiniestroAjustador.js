@@ -13,7 +13,7 @@ export default function consultarReportesSiniestroAjustador(req, res) {
       res.status(500).json();
       return;
     }
-
+ 
     let reporteSiniestroRepositorio = new SqlServerReporteSiniestroRepositorio(
       conexion
     );

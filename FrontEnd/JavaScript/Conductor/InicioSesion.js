@@ -14,7 +14,7 @@ function iniciarSesion() {
         alert("Campos incompletos");
     }
 }
-
+ 
 function comprobarCredenciales(usuario, contrasenia) {
     return new Promise(function(res, rej){
         axios.post(URL_BASE+'/conductor/login', {
@@ -26,7 +26,7 @@ function comprobarCredenciales(usuario, contrasenia) {
             res()
           })
           .catch(function (error) {
-            rej()
+            rej(error)
           });
     })
 }
