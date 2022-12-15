@@ -16,7 +16,7 @@ export default class IndexReporteSiniestroControllers {
   loadControllers() {
     this.routers.post(
       "/conductores/reportesSiniestro",
-      //validarToken,
+      validarToken,
       [
         body(["latitud", "longitud"]).isFloat().toFloat(),
         body("nombre").not().isEmpty().trim().escape(),
