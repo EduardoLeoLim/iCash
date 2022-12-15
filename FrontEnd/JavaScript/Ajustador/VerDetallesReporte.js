@@ -16,7 +16,7 @@ function mostrarDatosReporte() {
 }
 
 function agregarValoresStorage(data) {
-     
+      
         let idPoliza = data.poliza.id;
         let nombreCobertura =  data.poliza.cobertura.nombre;
         let tipo = data.poliza.cobertura.tipo;
@@ -71,8 +71,8 @@ function agregarValoresStorage(data) {
             
             let contenidoFotos = "";
             fotos.forEach(foto => { 
-              let nombre = foto.urlImagen;
-              contenidoFotos += `<img src='${URL_BASE + "/reportesSiniestro/imagenes/" + nombre}' width='100' height='100'>`
+              
+              contenidoFotos += `<img crossorigin="anonymous" src='${URL_BASE + "/reportesSiniestro/imagenes/" + foto}' width='300' height='300'>`
               console.log(foto)
             })
             document.getElementById("fotos").innerHTML = contenidoFotos;
@@ -91,18 +91,16 @@ function agregarValoresStorage(data) {
                                 <td>${numSerieVehiculo}</td>
                                 <td>${idPolizaInvolucrado}</td>
                             </tr>`;
-                            console.log(template)
             tabla.innerHTML += template;
 
         });
 }
 
 function cambiarVentana() {
-  const estatus = sessionStorage.getItem("estatus");
+  let estatus = document.getElementById("estatus").textContent;
   if (estatus == "Dictaminado") {
       alert("Ya se encuentra dictaminado el reporte")
   } else {
-      sessionStorage.setItem("idReporteSiniestro", ID_REPORTE)
       location.href = "../../HTML/Ajustador/DictaminarReporte.html";
   }
 }
