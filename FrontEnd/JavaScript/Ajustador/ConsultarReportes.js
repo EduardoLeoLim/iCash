@@ -1,9 +1,5 @@
-let ID_REPORTE = 0;
-
 function mostrarDatosReporte() {
-    const idReporte = sessionStorage.getItem("idReporte");
-    
-    const idEmpleado = sessionStorage.getItem("idEmpleado");
+    let idEmpleado = sessionStorage.getItem("idEmpleado");
     return new Promise(function(res, rej){
         axios.get(URL_BASE+'/ajustadores/'+idEmpleado+'/reportesSiniestro')
           .then(function (response) {
@@ -38,8 +34,13 @@ function agregarValoresStorage(data) {
 }
 
 function consultarReporte() {
-    var tds = document.getElementsByTagName('td');
-    ID_REPORTE = tds[0].innerHTML.trim()
+    var tabla = document.getElementById('reportes'), rIndex;
+    for (var i = 0; i < tabla.rows.length; i++) {
+        tabla.rows[i].onclick = function() {
+            rIndex = this.rowIndex;
+            sessionStorage.setItem("idReporteSiniestro",this.cells[0].innerHTML);
+        }
+    }
 }
 
 function filtrar() {
@@ -63,12 +64,21 @@ function filtrar() {
 }
 
 function cambiarVentana() {
-    if (ID_REPORTE == 0) {
+    if (sessionStorage.getItem("idReporteSiniestro") === null) {
         alert("Debe seleccionar un reporte para consultarlo")
     } else {
-        sessionStorage.setItem("idReporteSiniestro", ID_REPORTE)
         location.href = "../../HTML/Ajustador/VerDetallesReporte.html";
     }
+}
+
+function cerrarSesion() {
+    sessionStorage.removeItem("idUsuario")
+    sessionStorage.removeItem("idEmpleado")
+    sessionStorage.removeItem("contrasena")
+    sessionStorage.removeItem("nombreUsuario")
+    sessionStorage.removeItem("token")
+    sessionStorage.removeItem("idReporteSiniestro")
+    location.href = "../../HTML/Ajustador/LoginAjustador.html";
 }
 
 window.onload = function(){
@@ -76,4 +86,5 @@ window.onload = function(){
     mostrarDatosReporte()
     filtrar()
     document.getElementById("verDetalles").onclick = cambiarVentana;
+    document.getElementById("cerrarSesion").onclick = cerrarSesion;
 };

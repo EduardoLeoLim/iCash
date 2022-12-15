@@ -1,8 +1,6 @@
 
 function dictaminarReporte (){
     if(comprobarValoresVacios()){
-        //se quita cuando blas acabe
-        sessionStorage.setItem("idReporteSiniestro",2);
         const idReportesiniestro = sessionStorage.getItem("idReporteSiniestro");
         var descripcion = document.getElementById("txaDescripcion").value;
         var date = document.getElementById("inputDate").value;
@@ -12,11 +10,18 @@ function dictaminarReporte (){
                 fecha: date,
                 descripcion: descripcion,
                 idReporteSiniestro: idReportesiniestro
+              },{
+                headers: {
+                    'Authorization': sessionStorage.getItem("token")
+                }
               })
               .then(function (response) {
+                alert("Se dictaminó el reporte con exito")
+                location.href = "../../HTML/Ajustador/VerDetallesReporte.html";
                 res()
               })
               .catch(function (error) {
+                alert("Error al dictaminar el reporte")
                 rej(error)
               });
         })
@@ -37,7 +42,6 @@ function comprobarValoresVacios(){
 }
 
 window.onload = function(){
-    //Descomentar linea 43 cuando se tenga login Ajustador
     existenValoresStorage("../../HTML/Ajustador/LoginAjustador.html")
     document.getElementById("btnDictaminar").onclick = dictaminarReporte;
 };

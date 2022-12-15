@@ -102,7 +102,12 @@ function cambiarVentana() {
   }
 }
 
+function regresar() {
+  location.href = "../../HTML/Ajustador/ConsultarReportes.html";
+}
+
 window.onload = function(){
     mostrarDatosReporte()
     document.getElementById("dictaminar").onclick = cambiarVentana;
+    document.getElementById("regresar").onclick = regresar;
 };
