@@ -1,9 +1,22 @@
 import assert from 'assert';
 import { CriteriaBuilder } from "../src/compartido/dominio/criteria/CriteriaBuilder.js";
 import SqlServerReporteSiniestroRepositorio from "../src/reportesiniestro/infrestructura/persistencia/SqlServerReporteSiniestroRepositorio.js"
+import SqlServerImagenRepositorio from '../src/imagen/infrestructura/persistencia/SqlServerImagenRepositorio.js';
+import SqlServerCoberturaRepositorio from '../src/cobertura/infrestructura/persistencia/SqlServerCoberturaRepositorio.js'
+import SqlServerPolizaRepositorio from '../src/cobertura/infrestructura/persistencia/SqlServerCoberturaRepositorio.js'
+import SqlServerPlazoRepositorio from '../src/plazo/infrestructura/persistencia/SqlServerPlazoRepositorio.js'
+import SqlServerInvolucradoRepositorio from '../src/involucrado/infrestructura/persistencia/SqlServerInvolucradoRepositorio.js'
+import SqlServerVehiculoRepositorio from '../src/vehiculo/infrestructura/persistencia/SqlServerVehiculoRepositorio.js'
 import { Connection } from "tedious";
 import { Config } from "../src/compartido/infrestructura/conexiones/Conexion.js";
 import ConstultarReportesSiniestroPorAsignacion from "../src/reportesiniestro/aplicacion/ConsultarReportesSiniestroPorAsignacion.js"
+import ConsultarReporteSiniestroPorId from '../src/reportesiniestro/aplicacion/ConsultarReporteSiniestroPorId.js'
+import ConsultarImagenesDeReporte from '../src/imagen/aplicacion/ConsultarImagenesDeReporte.js'
+import ConsultarCoberturaPorId from '../src/cobertura/aplicacion/ConsultarCoberturaPorId.js'
+import ConsultarPolizaPorId from '../src/poliza/aplicacion/ConsultarPolizaPorId.js'
+import ConsultarPlazoPorId from '../src/plazo/aplicacion/ConsultarPlazoPorId.js'
+import ConsultarInvolucradosPorIdReporte from '../src/involucrado/aplicacion/ConsultarInvolucradosPorIdReporte.js'
+import ConsultarVehiculoPorId from '../src/vehiculo/aplicacion/ConsultarVehiculoPorId.js'
 import { resolve } from 'path';
 
 //TESTS
@@ -72,14 +85,12 @@ function consultarReportesSiniestroAjustador(idEmpleado) {
 
 function consultarDetallesDeReporteController(idReporte) {
   return new Promise((resolve, reject) => {
-    const idReporte = req.params.idReporte;
   let conexion = new Connection(Config);
 
   conexion.connect((err) => {
     if (err) {
-      console.log("Error: ", err);
-      resolve();
-      return;
+      assert.ok(false, "Error de conexión")
+      resolve()
     }
 
     let reporteSiniestroRepositorio = new SqlServerReporteSiniestroRepositorio(
@@ -221,7 +232,7 @@ function consultarDetallesDeReporteController(idReporte) {
         resolve(200);
       })
       .catch((error) => {
-        resolve(500);
+        reject(500);
       })
       .finally(() => {
         conexion.close();

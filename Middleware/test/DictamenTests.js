@@ -14,7 +14,7 @@ describe("Dictamenes", function() {
         it('Debe un 201, ya que el reporte no se encuentra dictaminado ', function() {
             return new Promise((resolve,reject) => {
               var date = Date.now()
-                registrarDictamenReporteController("Se realizo el dictamen correspondiente", date, 2)
+                registrarDictamenReporteController("Se realizo el dictamen correspondiente", date, 7)
                   .then((dictamenStatus) => {
                     assert.equal(dictamenStatus, 201)
                     resolve()

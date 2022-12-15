@@ -12,7 +12,7 @@ export default class IndexDictamenControllers {
   loadControllers() {
     this.routers.post(
       "/ajustador/:idReporteSiniestro/dictaminar",
-      //validarToken,
+      validarToken,
       [
         param("idReporteSiniestro").isInt(),
         body("descripcion").isString().isLength({ min: 1, max: 250 }),
