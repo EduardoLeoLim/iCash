@@ -1,4 +1,5 @@
 import { CriteriaBuilder } from "../../compartido/dominio/criteria/CriteriaBuilder.js";
+import ResourceNotFoundError from "../../compartido/aplicacion/excepciones/ResourceNotFoundError.js";
 
 export default class ConsultarVehiculoPorId {
   constructor(repositorio) {
@@ -15,7 +16,7 @@ export default class ConsultarVehiculoPorId {
       this.repositorio
         .buscar(criteria)
         .then((vehiculos) => {
-          if (vehiculos.length == 0) {
+          if (vehiculos.length === 0) {
             reject(new ResourceNotFoundError("Vehiculo no encontrado"));
           } else {
             resolve(vehiculos[0]);

@@ -17,7 +17,7 @@ export default class RegistrarReporteSiniestro {
       let reporteSiniestro = new ReporteSiniestro(
         nombre,
         "Pendiente",
-        Date.now(),
+        new Date(),
         horaAccidente,
         idMunicipio,
         latitud,

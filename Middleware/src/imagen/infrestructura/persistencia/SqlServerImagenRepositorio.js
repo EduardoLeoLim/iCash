@@ -47,6 +47,11 @@ export default class SqlServerImagenRepositorio {
 
   registrar = (imagen) =>
     new Promise((resolve, reject) => {
+      console.log(
+        "SqlServerImagenRepositorio.registrar " +
+          typeof imagen.idReporteSiniestro
+      );
+
       let consulta =
         "INSERT INTO Imagen (idReporteSiniestro, urlImagen) VALUES (@idReporteSiniestro, @urlImagen)";
 
@@ -54,17 +59,19 @@ export default class SqlServerImagenRepositorio {
         if (err) {
           console.log("Error ImagenRepositorio: " + err);
           reject(new Error("Error base de datos"));
-        } else {
-          resolve(imagen.urlImagen);
         }
       });
 
+      request.on('requestCompleted', () => {
+        resolve(imagen.urlImagen);
+      })
+
+      request.addParameter("urlImagen", TYPES.VarChar, imagen.urlImagen);
       request.addParameter(
         "idReporteSiniestro",
-        TYPES.VarChar,
+        TYPES.Int,
         imagen.idReporteSiniestro
       );
-      request.addParameter("urlImagen", TYPES.VarChar, imagen.urlImagen);
 
       this.conexion.execSql(request);
     });

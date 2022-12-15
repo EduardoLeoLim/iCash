@@ -55,7 +55,7 @@ export default class SqlServerVehiculoRepositorio {
       let consulta =
         "INSERT INTO Vehiculo (año, color, idMarca, modelo, numPlacas, numSerie, idPoliza) " +
         "VALUES (@value1, @value2, @value3, @value4, @value5, @value6, @value7); " +
-        "SELECT scope_identity();";
+        "SELECT scope_identity() as id;";
 
       let request = new Request(consulta, (err) => {
         if (err) {
@@ -75,7 +75,7 @@ export default class SqlServerVehiculoRepositorio {
       request.addParameter("value7", TYPES.Int, vehiculo.idPoliza);
 
       request.on("row", (columns) => {
-        idVehiculo = columns[0].value;
+        idVehiculo = columns.id.value;
         console.log("vehículo registrado con id: %d", idVehiculo);
       });
 

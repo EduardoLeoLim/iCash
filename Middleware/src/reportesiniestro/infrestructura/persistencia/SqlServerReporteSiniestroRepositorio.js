@@ -86,7 +86,7 @@ export default class SqlServerReporteSiniestroRepositorio {
       let consulta =
         "INSERT INTO ReporteSiniestro(nombre, estatus, fechaRegistro, horaAccidente, idMunicipio, latitud, longitud, idPoliza) " +
         "VALUES (@value1, @value2, @value3, @value4, @value5, @value6, @value7, @value8); " +
-        "SELECT scope_indentity() as id";
+        "SELECT scope_identity() as id;";
 
       let request = new Request(consulta, (error) => {
         if (error) {

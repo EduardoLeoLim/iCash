@@ -55,7 +55,7 @@ export default class SqlServerInvolucradoRepositorio {
       let consulta =
         "INSERT INTO Involucrado (nombre, idReporteSiniestro, idVehiculo) " +
         "VALUES (@value1, @value2, @value3);" +
-        "SELECT scope_identity();";
+        "SELECT scope_identity() as id;";
 
       let request = new Request(consulta, (err) => {
         if (err) {
@@ -71,7 +71,7 @@ export default class SqlServerInvolucradoRepositorio {
       request.addParameter("value3", TYPES.Int, involucrado.idVehiculo);
 
       request.on("row", (columnas) => {
-        idInvolucrado = columnas[0].value;
+        idInvolucrado = columnas.id.value;
       });
 
       this.conexion.execSql(request);

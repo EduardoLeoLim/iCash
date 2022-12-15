@@ -26,6 +26,10 @@ import ConsultarEntidadFederativaPorClave from "../../../entidadfederativa/aplic
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default function registrarReporteSiniestroController(req, res) {
+
+  console.log("entro al controlador");
+
+
   const imagenes = req.files;
   const {
     nombre,
@@ -41,11 +45,13 @@ export default function registrarReporteSiniestroController(req, res) {
 
   const conexion = new Connection(Config);
 
-  conexion.on("connect", (err) => {
+  conexion.connect((err) => {
     if (err) {
       console.log(err);
       return res.status(500).json();
     }
+
+    console.log("conexion exitosa");
 
     let condutorRepositorio = new SqlServerConductorRepositorio(conexion);
     let polizaRepositorio = new SqlServerPolizaRepositorio(conexion);
@@ -92,6 +98,8 @@ export default function registrarReporteSiniestroController(req, res) {
         return res.status(500).json("Error de base de datos");
       }
 
+      console.log("Inicia transaccion");
+
       consultarPoliza
         .ejecutar(idPoliza)
         .then((poliza) => {
@@ -114,60 +122,201 @@ export default function registrarReporteSiniestroController(req, res) {
           );
         })
         .then((idReporteSiniestro) => {
-          let promesas = [];
-          imagenes.forEach((imagen, indice) => {
-            let promesa = registrarImagen
-              .ejecutar(
-                idReporteSiniestro,
-                idReporteSiniestro +
-                  "-" +
-                  (indice + 1) +
-                  imagen.name.split(".").pop()
-              )
-              .then((urlImagen) => {
-                const pathImagen = path.join(__dirname, "../../../", urlImagen);
-                imagen.mv(pathImagen, (err) => {
+          let imagen = imagenes[0];
+
+          if (imagen) {
+            return new Promise((resolve, reject) => {
+               registrarImagen.ejecutar(idReporteSiniestro, idReporteSiniestro + "-" + 1 + "." + imagen.name.split(".").pop() ).then((urlImagen) => {
+                 imagen.mv(path.join(__dirname, "../../../../imagenes/" + urlImagen), (err) => {
                   if (err) {
                     console.log(err);
-                    return res.status(500).json("Error al guardar la imagen");
+                    console.log("Error al guardar la imagen");
                   }
-                });
+                    resolve(idReporteSiniestro);
+                })
               });
+            })
+          }
+          return idReporteSiniestro;
+          // let promesas = [];
+          // for (let i = 0; i < imagenes.length; i++) {
+          //   let promesa = registrarImagen.ejecutar(idReporteSiniestro, idReporteSiniestro + "-" + (i + 1) + imagenes[0].name.split(".").pop() )
+          //   promesas.push(promesa);
+          // }
+          // return Promise.all(promesas).then((urlImagenes) => {
+          //   console.log(urlImagenes);
+          //   return idReporteSiniestro;
+          // });
+        })
+        .then((idReporteSiniestro) => {
+          let imagen = imagenes[1];
 
-            promesas.push(promesa);
-          });
-          return Promise.all(promesas).then(() => {
-            return idReporteSiniestro;
-          });
+          if (imagen) {
+            return new Promise((resolve, reject) => {
+              registrarImagen.ejecutar(idReporteSiniestro, idReporteSiniestro + "-" + 2 + "." + imagen.name.split(".").pop() ).then((urlImagen) => {
+                imagen.mv(path.join(__dirname, "../../../../imagenes/" + urlImagen), (err) => {
+                  if (err) {
+                    console.log(err);
+                    console.log("Error al guardar la imagen");
+                  }
+                  resolve(idReporteSiniestro);
+                })
+              });
+            })
+          }
+          return idReporteSiniestro;
+        })
+        .then((idReporteSiniestro) => {
+          let imagen = imagenes[2];
+
+          if (imagen) {
+            return new Promise((resolve, reject) => {
+              registrarImagen.ejecutar(idReporteSiniestro, idReporteSiniestro + "-" + 3 + "." + imagen.name.split(".").pop() ).then((urlImagen) => {
+                imagen.mv(path.join(__dirname, "../../../../imagenes/" + urlImagen), (err) => {
+                  if (err) {
+                    console.log(err);
+                    console.log("Error al guardar la imagen");
+                  }
+                  resolve(idReporteSiniestro);
+                })
+              });
+            })
+          }
+          return idReporteSiniestro;
+        })
+
+        .then((idReporteSiniestro) => {
+          let imagen = imagenes[3];
+
+          if (imagen) {
+            return new Promise((resolve, reject) => {
+              registrarImagen.ejecutar(idReporteSiniestro, idReporteSiniestro + "-" + 4 + "." + imagen.name.split(".").pop() ).then((urlImagen) => {
+                imagen.mv(path.join(__dirname, "../../../../imagenes/" + urlImagen), (err) => {
+                  if (err) {
+                    console.log(err);
+                    console.log("Error al guardar la imagen");
+                  }
+                  resolve(idReporteSiniestro);
+                })
+              });
+            })
+          }
+          return idReporteSiniestro;
+        })
+
+        .then((idReporteSiniestro) => {
+          let imagen = imagenes[4];
+
+          if (imagen) {
+            return new Promise((resolve, reject) => {
+              registrarImagen.ejecutar(idReporteSiniestro, idReporteSiniestro + "-" + 5 + "." + imagen.name.split(".").pop() ).then((urlImagen) => {
+                imagen.mv(path.join(__dirname, "../../../../imagenes/" + urlImagen), (err) => {
+                  if (err) {
+                    console.log(err);
+                    console.log("Error al guardar la imagen");
+                  }
+                  resolve(idReporteSiniestro);
+                })
+              });
+            })
+          }
+          return idReporteSiniestro;
+        })
+
+        .then((idReporteSiniestro) => {
+          let imagen = imagenes[5];
+
+          if (imagen) {
+            return new Promise((resolve, reject) => {
+              registrarImagen.ejecutar(idReporteSiniestro, idReporteSiniestro + "-" + 6 + "." + imagen.name.split(".").pop() ).then((urlImagen) => {
+                imagen.mv(path.join(__dirname, "../../../../imagenes/" + urlImagen), (err) => {
+                  if (err) {
+                    console.log(err);
+                    console.log("Error al guardar la imagen");
+                  }
+                  resolve(idReporteSiniestro);
+                })
+              });
+            })
+          }
+          return idReporteSiniestro;
+        })
+
+        .then((idReporteSiniestro) => {
+          let imagen = imagenes[6];
+
+          if (imagen) {
+            return new Promise((resolve, reject) => {
+              registrarImagen.ejecutar(idReporteSiniestro, idReporteSiniestro + "-" + 7 + "." + imagen.name.split(".").pop() ).then((urlImagen) => {
+                imagen.mv(path.join(__dirname, "../../../../imagenes/" + urlImagen), (err) => {
+                  if (err) {
+                    console.log(err);
+                    console.log("Error al guardar la imagen");
+                  }
+                  resolve(idReporteSiniestro);
+                })
+              });
+            })
+          }
+          return idReporteSiniestro;
+        })
+
+        .then((idReporteSiniestro) => {
+          let imagen = imagenes[7];
+
+          if (imagen) {
+            return new Promise((resolve, reject) => {
+              registrarImagen.ejecutar(idReporteSiniestro, idReporteSiniestro + "-" + 8 + "." + imagen.name.split(".").pop() ).then((urlImagen) => {
+                imagen.mv(path.join(__dirname, "../../../../imagenes/" + urlImagen), (err) => {
+                  if (err) {
+                    console.log(err);
+                    console.log("Error al guardar la imagen");
+                  }
+                  resolve(idReporteSiniestro);
+                })
+              });
+            })
+          }
+          return idReporteSiniestro;
         })
         .then((idReporteSiniestro) => {
           let promesas = [];
-
-          involucrados.forEach((involucrado) => {
-            let promesa = registrarVehiculoyInvolucrado.ejecutar(
-              involucrado,
-              idReporteSiniestro
-            );
-            promesas.push(promesa);
-          });
-
-          return Promise.all(promesas);
-        })
-        .then(() => {
-          conexion.commit((err) => {
-            if (err) {
-              console.log(err);
-              return res.status(500).json("Error de base de datos");
+          (async () => {
+            for (let i = 0; i < involucrados.length; i++) {
+              let involucrado = involucrados[i];
+              await registrarVehiculoyInvolucrado.run(involucrado,idReporteSiniestro);
             }
+            conexion.commitTransaction((err) => {
+              if (err) {
+                throw err;
+              }
+              conexion.close();
+              return res.status(201).json();
+            });
+          })()
 
-            conexion.close();
-            return res.status(201).json();
-          });
+          // (async () => {
+          //   for (let promesa of promesas) {
+          //     await promesa();
+          //   }
+          // })();
         })
         .catch((err) => {
           console.log(err);
-          return res.status(500).json("Error de base de datos");
+          if (err.status) {
+            return res.status(err.status).json(err);
+          } else {
+            return res.status(500).json(err);
+          }
         });
     });
   });
+
+}
+
+const regitroInvolucrado = (involucrado, idReporteSiniestro) => {
+  return new Promise((resolve) => {
+
+  })
+
 }
