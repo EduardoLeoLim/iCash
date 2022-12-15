@@ -14,7 +14,7 @@ export default function consultarEntidadesFederativasController(req, res) {
       console.log("Error: ", err);
       res.status(500).json();
       return;
-    }
+    } 
 
     let entidadFederativaRepositorio =
       new SqlServerEntidadFederativaRepositorio(conexion);
