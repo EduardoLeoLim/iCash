@@ -599,22 +599,22 @@
 						{
 							"key": "imagen1",
 							"type": "file",
-							"src": "/C:/Users/eduardoleolim/Downloads/CamScanner 12-05-2022 19.07_5.jpg"
+							"src": "./postman/imagen1.jpg"
 						},
 						{
 							"key": "imagen2",
 							"type": "file",
-							"src": "/C:/Users/eduardoleolim/Downloads/CamScanner 12-05-2022 19.07_2.jpg"
+							"src": "./postman/imagen2.jpg"
 						},
 						{
 							"key": "imagen3",
 							"type": "file",
-							"src": "/C:/Users/eduardoleolim/Downloads/CamScanner 12-05-2022 19.07_1.jpg"
+							"src": "./postman/imagen3.jpg"
 						},
 						{
 							"key": "imagen4",
 							"type": "file",
-							"src": "/C:/Users/eduardoleolim/Downloads/CamScanner 12-05-2022 19.07_8.jpg"
+							"src": "./postman/imagen4.jpg"
 						}
 					]
 				},

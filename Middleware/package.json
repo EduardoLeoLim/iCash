@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "mocha --timeout 20000 test/**/*.js",
+    "test:newman" : "newman run ./test/postman/iCrash.postman_collection.json --working-dir ./test",
     "dev": "nodemon ./index.js",
     "start": "node ./index.js",
     "format": "prettier --write src/"
@@ -38,6 +39,7 @@
     "tedious": "^15.1.2"
   },
   "devDependencies": {
+    "newman": "^5.3.2",
     "nodemon": "^2.0.20",
     "prettier": "^2.7.1"
   }
