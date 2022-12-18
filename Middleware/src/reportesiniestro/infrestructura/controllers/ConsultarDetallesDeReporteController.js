@@ -14,6 +14,7 @@ import ConsultarPlazoPorId from "./../../../plazo/aplicacion/ConsultarPlazoPorId
 import ConsultarInvolucradosPorIdReporte from "./../../../involucrado/aplicacion/ConsultarInvolucradosPorIdReporte.js";
 import ConsultarVehiculoPorId from "./../../../vehiculo/aplicacion/ConsultarVehiculoPorId.js";
 import ConsultarPolizaPorId from "./../../../poliza/aplicacion/ConsultarPolizaPorId.js";
+import ApplicationError from "../../../compartido/aplicacion/excepciones/ApplicationError.js";
 
 export default function consultarDetallesDeReporteController(req, res) {
   const idReporte = req.params.idReporte;
@@ -173,7 +174,11 @@ export default function consultarDetallesDeReporteController(req, res) {
         res.status(200).json(detallesReporte);
       })
       .catch((error) => {
-        res.status(500).json({ error: error.message });
+        if (error instanceof ApplicationError) {
+          res.status(error.status).json(error);
+        } else {
+          res.status(400).json({ error: error.message });
+        }
       })
       .finally(() => {
         conexion.close();

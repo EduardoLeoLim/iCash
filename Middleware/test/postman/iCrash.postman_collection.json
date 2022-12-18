@@ -1,0 +1,778 @@
+{
+	"info": {
+		"_postman_id": "65358704-b813-45f0-93ab-0a8ff068ca84",
+		"name": "iCrash",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17608563"
+	},
+	"item": [
+		{
+			"name": "LoginAjustador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Inicio de sesion de ajustador exitoso\", () => {\r",
+							"    pm.response.to.have.status(200)\r",
+							"    let body = pm.response.json()\r",
+							"    pm.collectionVariables.set(\"tokenAjustador\", pm.response.headers.get(\"Authorization\"))\r",
+							"    pm.collectionVariables.set(\"idAjustador\", body.idEmpleado)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombreUsuario\": {{ajustadorUsuario}},\r\n    \"claveAcceso\": {{ajustadoPassword}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL_BASE}}/ajustador/login",
+					"host": [
+						"{{URL_BASE}}"
+					],
+					"path": [
+						"ajustador",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LoginConductor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Inicio de sesion de conductor exitoso\", () => {\r",
+							"    pm.response.to.have.status(200)\r",
+							"    let body = pm.response.json()\r",
+							"    pm.collectionVariables.set(\"tokenConductor\", pm.response.headers.get(\"Authorization\"))\r",
+							"    pm.collectionVariables.set(\"idConductor\", body.idConductor)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombreUsuario\": {{conductorUsuario}},\r\n    \"claveAcceso\": {{conductorPassword}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL_BASE}}/conductor/login",
+					"host": [
+						"{{URL_BASE}}"
+					],
+					"path": [
+						"conductor",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ValidarToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validar token\", () => {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{tokenAjustador}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL_BASE}}/validarToken",
+					"host": [
+						"{{URL_BASE}}"
+					],
+					"path": [
+						"validarToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ValidarToken Error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Token: Acceso denegado\", () => {\r",
+							"    pm.response.to.have.status(401)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL_BASE}}/validarToken",
+					"host": [
+						"{{URL_BASE}}"
+					],
+					"path": [
+						"validarToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPolizas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Consultar polizas de conductor con id \" + pm.collectionVariables.get(\"idConductor\"), () => {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL_BASE}}/conductores/:idConductor/polizas",
+					"host": [
+						"{{URL_BASE}}"
+					],
+					"path": [
+						"conductores",
+						":idConductor",
+						"polizas"
+					],
+					"variable": [
+						{
+							"key": "idConductor",
+							"value": "{{idConductor}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMarcas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Consultar marcas\", () => {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL_BASE}}/marcas",
+					"host": [
+						"{{URL_BASE}}"
+					],
+					"path": [
+						"marcas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetEntidadesFederativas Consulta de 2 entidades o menos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Consulta de 2 entidades federativas o menos\", () => {\r",
+							"    pm.response.to.have.status(200)\r",
+							"    pm.expect(pm.response.json().length).to.lessThan(3)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/entidadesfederativas?limit=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"entidadesfederativas"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetEntidadesFederativas",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Consultar entidades federativas\", () => {\r",
+							"    pm.response.to.have.status(200)\r",
+							"    let body = pm.response.json();\r",
+							"    var idsEntidades = body.map(entidad => entidad.id)\r",
+							"    pm.collectionVariables.set(\"idsEntidades\", idsEntidades)\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL_BASE}}/entidadesFederativas",
+					"host": [
+						"{{URL_BASE}}"
+					],
+					"path": [
+						"entidadesFederativas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMunicipios",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Consultar municipios\", () => {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let idsEntidades = pm.collectionVariables.get(\"idsEntidades\")\r",
+							"\r",
+							"if (!Array.isArray(idsEntidades) || idsEntidades.length === 0) {\r",
+							"    throw new Error(\"No hay entediades en variables de la colección\");\r",
+							"} else {\r",
+							"    pm.collectionVariables.set(\"idEntidadFederativa\", idsEntidades[0])\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL_BASE}}/entidadesfederativas/{{idEntidadFederativa}}/municipios",
+					"host": [
+						"{{URL_BASE}}"
+					],
+					"path": [
+						"entidadesfederativas",
+						"{{idEntidadFederativa}}",
+						"municipios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetReporteNoEncontrado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Reporte no encontrado\", () => {\r",
+							"    pm.response.to.have.status(404)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL_BASE}}/reportesSiniestro/1",
+					"host": [
+						"{{URL_BASE}}"
+					],
+					"path": [
+						"reportesSiniestro",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetReportesAjustador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Consultar reportes de ajustador con id\", () => {\r",
+							"    pm.response.to.have.status(200)\r",
+							"    let body = pm.response.json();\r",
+							"    let idsReportes = body.map(reporte => reporte.id);\r",
+							"    pm.collectionVariables.set(\"idsReportesAjustador\", idsReportes)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fecha\": \"16-12-2022\",\r\n    \"descripcion\": \"Sí choco\",\r\n    \"idReporteSiniestro\": \"10\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL_BASE}}/ajustadores/{{idAjustador}}/reportesSiniestro",
+					"host": [
+						"{{URL_BASE}}"
+					],
+					"path": [
+						"ajustadores",
+						"{{idAjustador}}",
+						"reportesSiniestro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetReporte",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let idsReportes = pm.collectionVariables.get(\"idsReportesAjustador\")\r",
+							"\r",
+							"if (!Array.isArray(idsReportes) || idsReportes.length === 0) {\r",
+							"    throw new Error(\"No hay entediades en variables de la colección\");\r",
+							"} else {\r",
+							"    pm.collectionVariables.set(\"idReporteAjustador\", idsReportes[0])\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Consultar detalles de reporte con id \"+ pm.collectionVariables.get(\"idReporteAjustador\"), () => {\r",
+							"    pm.response.to.have.status(200)\r",
+							"    let body = pm.response.json();\r",
+							"    pm.collectionVariables.set(\"foto\", body.fotos[0])\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL_BASE}}/reportesSiniestro/{{idReporteAjustador}}",
+					"host": [
+						"{{URL_BASE}}"
+					],
+					"path": [
+						"reportesSiniestro",
+						"{{idReporteAjustador}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetImagen",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Consultar imagen\", () => {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL_BASE}}/reportesSiniestro/imagenes/{{foto}}",
+					"host": [
+						"{{URL_BASE}}"
+					],
+					"path": [
+						"reportesSiniestro",
+						"imagenes",
+						"{{foto}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostReporteSineistro",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"horaAccidente\", new Date())"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Registrar reporte\", () => {\r",
+							"    pm.response.to.have.status(201)\r",
+							"    const body = pm.response.json()\r",
+							"    pm.collectionVariables.set(\"idReporteSiniestro\", body.idReporteSiniestro)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{tokenConductor}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "involucrados",
+							"value": "[{\"nombre\":\"Pedro Sanchez Gomez\",\"vehiculo\":{\"idMarca\":1,\"modelo\":\"modelo\",\"numPlacas\":\"sgdsfgdf\",\"color\":\"Azul\",\"año\":2015,\"numSerie\":\"3465643643\"}},{\"nombre\":\"anonimo\",\"vehiculo\":{\"idMarca\":1,\"modelo\":\"modelo\",\"numPlacas\":\"sgdsfgdf\",\"color\":\"Azul\",\"año\":2015,\"numSerie\":\"3465643643\"}}]",
+							"type": "text"
+						},
+						{
+							"key": "idConductor",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "Reporte POSTMAN",
+							"type": "text"
+						},
+						{
+							"key": "idPoliza",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "latitud",
+							"value": "96.46475",
+							"type": "text"
+						},
+						{
+							"key": "longitud",
+							"value": "90.57657",
+							"type": "text"
+						},
+						{
+							"key": "claveEntidadFederativa",
+							"value": "30",
+							"type": "text"
+						},
+						{
+							"key": "claveMunicipio",
+							"value": "87",
+							"type": "text"
+						},
+						{
+							"key": "horaAccidente",
+							"value": "{{horaAccidente}}",
+							"type": "text"
+						},
+						{
+							"key": "imagen1",
+							"type": "file",
+							"src": "/C:/Users/eduardoleolim/Downloads/CamScanner 12-05-2022 19.07_5.jpg"
+						},
+						{
+							"key": "imagen2",
+							"type": "file",
+							"src": "/C:/Users/eduardoleolim/Downloads/CamScanner 12-05-2022 19.07_2.jpg"
+						},
+						{
+							"key": "imagen3",
+							"type": "file",
+							"src": "/C:/Users/eduardoleolim/Downloads/CamScanner 12-05-2022 19.07_1.jpg"
+						},
+						{
+							"key": "imagen4",
+							"type": "file",
+							"src": "/C:/Users/eduardoleolim/Downloads/CamScanner 12-05-2022 19.07_8.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL_BASE}}/conductores/reportesSiniestro",
+					"host": [
+						"{{URL_BASE}}"
+					],
+					"path": [
+						"conductores",
+						"reportesSiniestro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostDictaminar",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"fechaDictamen\", \"2022-12-10\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{tokenAjustador}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fecha\": \"{{fechaDictamen}}\",\r\n    \"descripcion\": \"Sí choco\",\r\n    \"idReporteSiniestro\": \"57\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL_BASE}}/ajustador/10/dictaminar",
+					"host": [
+						"{{URL_BASE}}"
+					],
+					"path": [
+						"ajustador",
+						"10",
+						"dictaminar"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL_BASE",
+			"value": "http://localhost:8000"
+		},
+		{
+			"key": "ajustadorUsuario",
+			"value": "\"2282393962\"",
+			"type": "string"
+		},
+		{
+			"key": "ajustadoPassword",
+			"value": "\"12345678\"",
+			"type": "string"
+		},
+		{
+			"key": "conductorUsuario",
+			"value": "\"2282519509\"",
+			"type": "string"
+		},
+		{
+			"key": "conductorPassword",
+			"value": "\"1234\"",
+			"type": "string"
+		},
+		{
+			"key": "tokenAjustador",
+			"value": ""
+		},
+		{
+			"key": "tokenConductor",
+			"value": ""
+		},
+		{
+			"key": "idConductor",
+			"value": ""
+		},
+		{
+			"key": "idsEntidades",
+			"value": ""
+		},
+		{
+			"key": "idEntidadFederativa",
+			"value": ""
+		},
+		{
+			"key": "idAjustador",
+			"value": ""
+		},
+		{
+			"key": "reportesAjustador",
+			"value": ""
+		},
+		{
+			"key": "idsReportesAjustador",
+			"value": ""
+		},
+		{
+			"key": "idReporteAjustador",
+			"value": ""
+		},
+		{
+			"key": "foto",
+			"value": ""
+		},
+		{
+			"key": "horaAccidente",
+			"value": ""
+		},
+		{
+			"key": "idReporteSiniestro",
+			"value": ""
+		},
+		{
+			"key": "fechaDictamen",
+			"value": ""
+		}
+	]
+}

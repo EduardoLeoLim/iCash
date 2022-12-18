@@ -73,7 +73,11 @@ export default function registrarDictamenReporteController(req, res) {
           });
         })
         .catch((error) => {
-          res.status(500).json(error);
+          if (error instanceof ApplicationError) {
+            res.status(error.status).json(error);
+          } else  {
+            res.status(500).json(error);
+          }
         });
     });
   });

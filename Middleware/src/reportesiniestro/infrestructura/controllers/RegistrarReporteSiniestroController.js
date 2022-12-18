@@ -1,6 +1,5 @@
 import { Connection } from "tedious";
 import { Config } from "../../../compartido/infrestructura/conexiones/Conexion.js";
-import SqlServerDictamenRepositorio from "../../../dictamen/infrestructura/persistencia/SqlServerDictamenRepositorio.js";
 import SqlServerReporteSiniestroRepositorio from "../persistencia/SqlServerReporteSiniestroRepositorio.js";
 import SqlServerPolizaRepositorio from "../../../poliza/infrestructura/persistencia/SqlServerPolizaRepositorio.js";
 import SqlServerMunicipioRepositorio from "../../../municipio/infrestructura/persistencia/SqlServerMunicipioRepositorio.js";
@@ -276,7 +275,7 @@ export default function registrarReporteSiniestroController(req, res) {
                 throw err;
               }
               conexion.close();
-              return res.status(201).json();
+              return res.status(201).json({idReporteSiniestro: idReporteSiniestro});
             });
           })()
 
